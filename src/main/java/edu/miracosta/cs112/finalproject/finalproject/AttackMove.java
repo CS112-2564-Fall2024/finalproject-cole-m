@@ -49,7 +49,7 @@ public class AttackMove {
 
     @Override
     public String toString() {
-        return "AttackName = " + this.attackName +
+        return "AttackMove: AttackName = " + this.attackName +
                 ", DamageAmount = " + this.damageAmount +
                 ", AttacksLeft = " + this.attacksLeft;
     }
