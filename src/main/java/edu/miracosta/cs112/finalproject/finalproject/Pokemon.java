@@ -108,5 +108,5 @@ abstract class Pokemon {
         }
     }
 
-    abstract void attack(Pokemon opponentPokemon);
+    public abstract void attack(Pokemon opponentPokemon);
 }
