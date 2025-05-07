@@ -2,6 +2,10 @@ package edu.miracosta.cs112.finalproject.finalproject;
 
 public class FirePokemon extends Pokemon{
 
+    public FirePokemon(String name, String type, String imagePath, int hp, AttackMove[] moveSet) {
+        super(name, type, imagePath, hp, moveSet);
+    }
+
     public FirePokemon() {
         this.setType("Fire");
     }
