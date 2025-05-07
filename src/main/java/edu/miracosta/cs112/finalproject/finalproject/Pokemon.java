@@ -3,19 +3,20 @@ package edu.miracosta.cs112.finalproject.finalproject;
 abstract class Pokemon {
     private String name;
     private String type;
+    private String imagePath;
     private int hp;
     private AttackMove[] moveSet;
 
-    public Pokemon(String name, String type, int hp, AttackMove[] moveSet) {
-        this.setAll(name, type, hp, moveSet);
+    public Pokemon(String name, String type, String imagePath, int hp, AttackMove[] moveSet) {
+        this.setAll(name, type, imagePath, hp, moveSet);
     }
 
     public Pokemon() {
-        this.setAll("Pikachu", "Electric", 100, null);
+        this.setAll("Pikachu", "Electric", "N/A", 100, null);
     }
 
     public Pokemon(Pokemon copy) {
-        this.setAll(copy.name, copy.type, copy.hp, copy.moveSet);
+        this.setAll(copy.name, copy.type, copy.imagePath, copy.hp, copy.moveSet);
     }
 
     public void setName(String name) {
@@ -26,6 +27,10 @@ abstract class Pokemon {
         this.type = type;
     }
 
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+
     public void setHp(int hp) {
         this.hp = hp;
     }
@@ -34,9 +39,10 @@ abstract class Pokemon {
         this.moveSet = moveSet;
     }
 
-    public void setAll(String name, String type, int hp, AttackMove[] moveSet) {
+    public void setAll(String name, String type, String imagePath, int hp, AttackMove[] moveSet) {
         this.setName(name);
         this.setType(type);
+        this.setImagePath(imagePath);
         this.setHp(hp);
         this.setMoveSet(moveSet);
     }
@@ -47,6 +53,10 @@ abstract class Pokemon {
 
     public String getType() {
         return this.type;
+    }
+
+    public String getImagePath() {
+        return this.imagePath;
     }
 
     public int getHp() {
@@ -71,6 +81,7 @@ abstract class Pokemon {
         }
         return "Pokemon: Name = " + this.name +
                 ", Type = " + this.type +
+                ", ImagePath = " + this.imagePath +
                 ", HP = " + this.hp +
                 ", MoveSet = [" + moves + "]";
     }
@@ -88,6 +99,9 @@ abstract class Pokemon {
                 return false;
             }
             if (!this.type.equals(otherPokemon.type)) {
+                return false;
+            }
+            if (!this.imagePath.equals(otherPokemon.imagePath)) {
                 return false;
             }
             if (this.moveSet == null && otherPokemon.moveSet != null || this.moveSet != null && otherPokemon.moveSet == null) {
