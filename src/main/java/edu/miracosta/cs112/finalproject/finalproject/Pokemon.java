@@ -4,19 +4,20 @@ abstract class Pokemon {
     private String name;
     private String type;
     private String imagePath;
+    private int maxHP;
     private int hp;
     private AttackMove[] moveSet;
 
-    public Pokemon(String name, String type, String imagePath, int hp, AttackMove[] moveSet) {
-        this.setAll(name, type, imagePath, hp, moveSet);
+    public Pokemon(String name, String type, String imagePath, int maxHP, int hp, AttackMove[] moveSet) {
+        this.setAll(name, type, imagePath, maxHP, hp, moveSet);
     }
 
     public Pokemon() {
-        this.setAll("Pikachu", "Electric", "N/A", 100, null);
+        this.setAll("Pikachu", "Electric", "N/A", 100, 100, null);
     }
 
     public Pokemon(Pokemon copy) {
-        this.setAll(copy.name, copy.type, copy.imagePath, copy.hp, copy.moveSet);
+        this.setAll(copy.name, copy.type, copy.imagePath, copy.maxHP ,copy.hp, copy.moveSet);
     }
 
     public void setName(String name) {
@@ -31,6 +32,10 @@ abstract class Pokemon {
         this.imagePath = imagePath;
     }
 
+    public void setMaxHP(int maxHP) {
+        this.maxHP = maxHP;
+    }
+
     public void setHp(int hp) {
         this.hp = hp;
     }
@@ -39,10 +44,11 @@ abstract class Pokemon {
         this.moveSet = moveSet;
     }
 
-    public void setAll(String name, String type, String imagePath, int hp, AttackMove[] moveSet) {
+    public void setAll(String name, String type, String imagePath, int maxHP, int hp, AttackMove[] moveSet) {
         this.setName(name);
         this.setType(type);
         this.setImagePath(imagePath);
+        this.setMaxHP(maxHP);
         this.setHp(hp);
         this.setMoveSet(moveSet);
     }
@@ -57,6 +63,10 @@ abstract class Pokemon {
 
     public String getImagePath() {
         return this.imagePath;
+    }
+
+    public int getMaxHP() {
+        return this.maxHP;
     }
 
     public int getHp() {
@@ -82,6 +92,7 @@ abstract class Pokemon {
         return "Pokemon: Name = " + this.name +
                 ", Type = " + this.type +
                 ", ImagePath = " + this.imagePath +
+                ", MaxHP = " + this.maxHP +
                 ", HP = " + this.hp +
                 ", MoveSet = [" + moves + "]";
     }
@@ -92,9 +103,6 @@ abstract class Pokemon {
             return false;
         } else {
             Pokemon otherPokemon = (Pokemon)other;
-            if (this.hp != otherPokemon.hp) {
-                return false;
-            }
             if (!this.name.equals(otherPokemon.name)) {
                 return false;
             }
@@ -102,6 +110,12 @@ abstract class Pokemon {
                 return false;
             }
             if (!this.imagePath.equals(otherPokemon.imagePath)) {
+                return false;
+            }
+            if (this.maxHP != otherPokemon.maxHP) {
+                return false;
+            }
+            if (this.hp != otherPokemon.hp) {
                 return false;
             }
             if (this.moveSet == null && otherPokemon.moveSet != null || this.moveSet != null && otherPokemon.moveSet == null) {
