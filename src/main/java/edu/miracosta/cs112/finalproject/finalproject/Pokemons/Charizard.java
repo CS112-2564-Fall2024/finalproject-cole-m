@@ -6,7 +6,7 @@ import edu.miracosta.cs112.finalproject.finalproject.moveSet.*;
 
 public class Charizard extends FirePokemon {
     public Charizard() {
-        super("Charizard", "Fire", "/PokemonImages/Charizard.png", 250,
+        super("Charizard", "Fire", "/PokemonImages/Charizard.png", 250, 250,
                 new AttackMove[]{
                         new Inferno(),
                         new Ember(),

@@ -6,7 +6,7 @@ import edu.miracosta.cs112.finalproject.finalproject.moveSet.*;
 
 public class Hooh extends FirePokemon {
     public Hooh() {
-        super("Ho-oh", "Fire", "/PokemonImages/Ho-oh.png", 350,
+        super("Ho-oh", "Fire", "/PokemonImages/Ho-oh.png", 350, 350,
                 new AttackMove[]{
                         new Inferno(),
                         new Ember(),

@@ -6,7 +6,7 @@ import edu.miracosta.cs112.finalproject.finalproject.moveSet.*;
 
 public class Chimchar extends FirePokemon {
     public Chimchar() {
-        super("Chimchar", "Fire", "/PokemonImages/Chimchar.png", 100,
+        super("Chimchar", "Fire", "/PokemonImages/Chimchar.png", 100, 100,
                 new AttackMove[]{
                         new Cut(),
                         new Ember(),

@@ -2,11 +2,12 @@ package edu.miracosta.cs112.finalproject.finalproject.Pokemons;
 
 import edu.miracosta.cs112.finalproject.finalproject.AttackMove;
 import edu.miracosta.cs112.finalproject.finalproject.FirePokemon;
+import edu.miracosta.cs112.finalproject.finalproject.GrassPokemon;
 import edu.miracosta.cs112.finalproject.finalproject.moveSet.*;
 
-public class Treecko extends FirePokemon {
+public class Treecko extends GrassPokemon {
     public Treecko() {
-        super("Treecko", "Grass", "/PokemonImages/Treecko.png", 100,
+        super("Treecko", "Grass", "/PokemonImages/Treecko.png", 100, 100,
                 new AttackMove[]{
                         new Cut(),
                         new DizzyPunch(),
