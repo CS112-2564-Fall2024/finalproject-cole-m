@@ -55,17 +55,22 @@ public class Player {
     }
 
     public void healPokemon(Pokemon pokemon) {
-        //TODO: heal pokemon using Potion class
-        if(potionsCount > 0) {
-            if(pokemon.getHp() > 0) {
-                if((pokemon.getHp() + 50) > pokemon.getMaxHP()){
-                    System.out.println(pokemon.getName() + " HP was originally " + pokemon.getHp());
-                    pokemon.setHp(pokemon.getMaxHP());
-                    System.out.println("And was healed to max HP of "  + pokemon.getHp());
+        if (potionsCount > 0) {
+            int currentHp = pokemon.getHp();
+            int maxHp = pokemon.getMaxHP();
+
+            if (currentHp > 0) {
+                System.out.println(pokemon.getName() + " HP was originally " + currentHp);
+
+                if (currentHp + 50 > maxHp) {
+                    pokemon.setHp(maxHp);
+                    System.out.println("And was healed to max HP of " + maxHp);
                 } else {
-                    pokemon.setHp(pokemon.getHp() + 50);
+                    pokemon.setHp(currentHp + 50);
                     System.out.println(pokemon.getName() + " was healed to a HP of " + pokemon.getHp());
                 }
+
+                potionsCount--;
             } else {
                 System.out.println(pokemon.getName() + " is knocked out");
             }
@@ -73,6 +78,7 @@ public class Player {
             System.out.println("You are out of potion!");
         }
     }
+
 
     @Override
     public String toString() {
