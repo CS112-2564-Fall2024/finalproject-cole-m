@@ -1,7 +1,7 @@
 package edu.miracosta.cs112.finalproject.finalproject;
 
 public class Player {
-    private Pokemon[] pokemons = new Pokemon[6];
+    private Pokemon[] pokemons;
     private int pokemonCount;
     private int potionsCount;
 
@@ -56,11 +56,22 @@ public class Player {
 
     public void healPokemon(Pokemon pokemon) {
         //TODO: heal pokemon using Potion class
-
-    }
-
-    public void commandAttack(Pokemon ally, Pokemon opponent) {
-        //TODO: Attack opponent pokemon using ally pokemon
+        if(potionsCount > 0) {
+            if(pokemon.getHp() > 0) {
+                if((pokemon.getHp() + 50) > pokemon.getMaxHP()){
+                    System.out.println(pokemon.getName() + " HP was originally " + pokemon.getHp());
+                    pokemon.setHp(pokemon.getMaxHP());
+                    System.out.println("And was healed to max HP of "  + pokemon.getHp());
+                } else {
+                    pokemon.setHp(pokemon.getHp() + 50);
+                    System.out.println(pokemon.getName() + " was healed to a HP of " + pokemon.getHp());
+                }
+            } else {
+                System.out.println(pokemon.getName() + " is knocked out");
+            }
+        } else {
+            System.out.println("You are out of potion!");
+        }
     }
 
     @Override
