@@ -120,5 +120,5 @@ abstract class Player {
 
     public abstract void commandAttack(Pokemon opponentPokemon);
 
-    public abstract void healPokemon(Pokemon pokemon);
+    public abstract void healPokemon();
 }
