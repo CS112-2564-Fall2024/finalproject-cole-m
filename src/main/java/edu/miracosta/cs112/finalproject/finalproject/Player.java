@@ -1,6 +1,6 @@
 package edu.miracosta.cs112.finalproject.finalproject;
 
-public class Player {
+abstract class Player {
     private Pokemon[] pokemons;
     private int pokemonCount;
     private int potionsCount;
@@ -54,32 +54,6 @@ public class Player {
         return this.potionsCount;
     }
 
-    public void healPokemon(Pokemon pokemon) {
-        if (potionsCount > 0) {
-            int currentHp = pokemon.getHp();
-            int maxHp = pokemon.getMaxHP();
-
-            if (currentHp > 0) {
-                System.out.println(pokemon.getName() + " HP was originally " + currentHp);
-
-                if (currentHp + 50 > maxHp) {
-                    pokemon.setHp(maxHp);
-                    System.out.println("And was healed to max HP of " + maxHp);
-                } else {
-                    pokemon.setHp(currentHp + 50);
-                    System.out.println(pokemon.getName() + " was healed to a HP of " + pokemon.getHp());
-                }
-
-                potionsCount--;
-            } else {
-                System.out.println(pokemon.getName() + " is knocked out");
-            }
-        } else {
-            System.out.println("You are out of potion!");
-        }
-    }
-
-
     @Override
     public String toString() {
         String pokemonNames = "";
@@ -125,4 +99,10 @@ public class Player {
 
         return true;
     }
+
+    public abstract void switchPokemon();
+
+    public abstract void commandAttack(Pokemon opponentPokemon);
+
+    public abstract void healPokemon();
 }
