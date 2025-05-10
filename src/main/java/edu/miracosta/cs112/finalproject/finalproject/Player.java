@@ -1,20 +1,23 @@
 package edu.miracosta.cs112.finalproject.finalproject;
 
+import edu.miracosta.cs112.finalproject.finalproject.Pokemons.Chimchar;
+
 abstract class Player {
     private Pokemon[] pokemons;
+    private Pokemon currentPokemon;
     private int pokemonCount;
     private int potionsCount;
 
-    public Player(Pokemon[] pokemons, int pokemonCount, int potionsCount) {
-        this.setAll(pokemons, pokemonCount, potionsCount);
+    public Player(Pokemon[] pokemons, Pokemon currentPokemon, int pokemonCount, int potionsCount) {
+        this.setAll(pokemons, currentPokemon, pokemonCount, potionsCount);
     }
 
     public Player() {
-        this.setAll(new Pokemon[6], 0, 5);
+        this.setAll(new Pokemon[6], new Chimchar(), 1, 5);
     }
 
     public Player(Player copy) {
-        this.setAll(copy.pokemons, copy.pokemonCount, copy.potionsCount);
+        this.setAll(copy.pokemons, copy.currentPokemon, copy.pokemonCount, copy.potionsCount);
     }
 
     public void setPokemons(Pokemon[] pokemons) {
@@ -22,6 +25,10 @@ abstract class Player {
             this.pokemons = pokemons;
             this.setPokemonCount(pokemons.length);
         }
+    }
+
+    public void setCurrentPokemon(Pokemon currentPokemon) {
+        this.currentPokemon = currentPokemon;
     }
 
     public void setPokemonCount(int pokemonCount) {
@@ -36,14 +43,19 @@ abstract class Player {
         }
     }
 
-    public void setAll(Pokemon[] pokemons, int pokemonCount, int potionsCount) {
+    public void setAll(Pokemon[] pokemons, Pokemon currentPokemon, int pokemonCount, int potionsCount) {
         this.setPokemons(pokemons);
+        this.setCurrentPokemon(currentPokemon);
         this.setPokemonCount(pokemonCount);
         this.setPotionsCount(potionsCount);
     }
 
     public Pokemon[] getPokemons() {
-        return pokemons;
+        return this.pokemons;
+    }
+
+    public Pokemon getCurrentPokemon() {
+        return this.currentPokemon;
     }
 
     public int getPokemonCount() {
@@ -66,6 +78,7 @@ abstract class Player {
             }
         }
         return "Player: Pokemons = [" + pokemonNames + "]" +
+                ", CurrentPokemon = " + this.currentPokemon +
                 ", PokemonCount = " + this.pokemonCount +
                 ", PotionsCount = " + this.potionsCount;
     }
@@ -76,6 +89,9 @@ abstract class Player {
             return false;
         } else {
             Player otherPlayer = (Player)other;
+            if(!this.currentPokemon.equals(otherPlayer.getCurrentPokemon())) {
+                return false;
+            }
             if (this.pokemonCount != otherPlayer.pokemonCount) {
                 return false;
             }
@@ -100,9 +116,9 @@ abstract class Player {
         return true;
     }
 
-    public abstract void switchPokemon();
+    public abstract Pokemon switchPokemon();
 
     public abstract void commandAttack(Pokemon opponentPokemon);
 
-    public abstract void healPokemon();
+    public abstract void healPokemon(Pokemon pokemon);
 }
