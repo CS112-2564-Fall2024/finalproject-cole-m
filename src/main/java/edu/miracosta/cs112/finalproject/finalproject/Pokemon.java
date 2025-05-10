@@ -1,6 +1,8 @@
 package edu.miracosta.cs112.finalproject.finalproject;
 
-abstract class Pokemon {
+import java.util.Objects;
+
+public class Pokemon {
     private String name;
     private String type;
     private String imagePath;
@@ -136,5 +138,66 @@ abstract class Pokemon {
         }
     }
 
-    public abstract void attack(AttackMove attackMove, Pokemon opponentPokemon);
+    public void attack(AttackMove attackMove, Pokemon opponentPokemon) {
+        int currentOppHP = opponentPokemon.getHp();
+        int damage = attackMove.getDamageAmount();
+
+        //Fire Attack
+        if (Objects.equals(attackMove.getType(), "Fire")) {
+            if (Objects.equals(opponentPokemon.getType(), "Water")) {
+                damage *= 0.2;
+                opponentPokemon.setHp(currentOppHP - (int) damage);
+                System.out.println(attackMove.getAttackName() + " was used and dealt " + damage + " damage to " + opponentPokemon.getName() + ".");
+
+                System.out.println("Fire is not so effective against Water\n");
+            } else if (Objects.equals(opponentPokemon.getType(), "Grass")) {
+                damage *= 1.5;
+                opponentPokemon.setHp(currentOppHP - (int) damage);
+                System.out.println(attackMove.getAttackName() + " was used and dealt " + damage + " damage to " + opponentPokemon.getName() + ".");
+                System.out.println("Fire is very effective against Grass\n");
+            } else {
+                opponentPokemon.setHp(currentOppHP - (int) damage);
+                System.out.println(attackMove.getAttackName() + " was used and dealt " + damage + " damage to " + opponentPokemon.getName() + ".\n");
+            }
+        }
+
+        //Water Attack
+        else if (Objects.equals(attackMove.getType(), "Water")) {
+            if (Objects.equals(opponentPokemon.getType(), "Grass")) {
+                damage *= 0.2;
+                opponentPokemon.setHp(currentOppHP - (int) damage);
+                System.out.println(attackMove.getAttackName() + " was used and dealt " + damage + " damage to " + opponentPokemon.getName() + ".");
+                System.out.println("Water is not so effective against Grass\n");
+            } else if (Objects.equals(opponentPokemon.getType(), "Fire")) {
+                damage *= 1.5;
+                opponentPokemon.setHp(currentOppHP - (int) damage);
+                System.out.println(attackMove.getAttackName() + " was used and dealt " + damage + " damage to " + opponentPokemon.getName() + ".");
+                System.out.println("Water is very effective against Fire\n");
+            } else {
+                opponentPokemon.setHp(currentOppHP - (int) damage);
+                System.out.println(attackMove.getAttackName() + " was used and dealt " + damage + " damage to " + opponentPokemon.getName() + ".\n");
+            }
+        }
+
+        //Grass Attack
+        else if (Objects.equals(attackMove.getType(), "Grass")) {
+            if (Objects.equals(opponentPokemon.getType(), "Fire")) {
+                damage *= 0.2;
+                opponentPokemon.setHp(currentOppHP - (int) damage);
+                System.out.println(attackMove.getAttackName() + " was used and dealt " + damage + " damage to " + opponentPokemon.getName() + ".");
+                System.out.println("Grass is not so effective against Fire\n");
+            } else if (Objects.equals(opponentPokemon.getType(), "Water")) {
+                damage *= 1.5;
+                opponentPokemon.setHp(currentOppHP - (int) damage);
+                System.out.println(attackMove.getAttackName() + " was used and dealt " + damage + " damage to " + opponentPokemon.getName() + ".");
+                System.out.println("Grass is very effective against Water\n");
+            } else {
+                opponentPokemon.setHp(currentOppHP - (int) damage);
+                System.out.println(attackMove.getAttackName() + " was used and dealt " + damage + " damage to " + opponentPokemon.getName() + ".\n");
+            }
+        } else {
+            opponentPokemon.setHp(currentOppHP - (int) damage);
+            System.out.println(attackMove.getAttackName() + " was used and dealt " + damage + " damage to " + opponentPokemon.getName() + ".\n");
+        }
+    }
 }
