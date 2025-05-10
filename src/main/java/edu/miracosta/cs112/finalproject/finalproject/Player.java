@@ -8,8 +8,8 @@ abstract class Player {
     private int pokemonCount;
     private int potionsCount;
 
-    public Player(Pokemon[] pokemons, Pokemon currentPokemon, int pokemonCount, int potionsCount) {
-        this.setAll(pokemons, currentPokemon, pokemonCount, potionsCount);
+    public Player(Pokemon[] pokemons, int pokemonCount, int potionsCount) {
+        this.setAll(pokemons, pokemons[0], pokemonCount, potionsCount);
     }
 
     public Player() {
