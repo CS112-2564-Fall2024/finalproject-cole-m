@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.Pane?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button layoutX="14.0" layoutY="26.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="282.0" text="Pokemon 1" />
+      <Button layoutX="14.0" layoutY="131.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="282.0" text="Pokemon 3" />
+      <Button layoutX="14.0" layoutY="239.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="282.0" text="Pokemon 5" />
+      <Button layoutX="304.0" layoutY="77.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="282.0" text="Pokemon 1" />
+      <Button layoutX="304.0" layoutY="182.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="282.0" text="Pokemon 3" />
+      <Button layoutX="304.0" layoutY="290.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="282.0" text="Pokemon 5" />
+   </children>
+</Pane>
