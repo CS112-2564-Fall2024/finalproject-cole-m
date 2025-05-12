@@ -1,4 +1,6 @@
 package edu.miracosta.cs112.finalproject.finalproject.controllers;
+import edu.miracosta.cs112.finalproject.finalproject.AttackMove;
+import edu.miracosta.cs112.finalproject.finalproject.UserPlayer;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,6 +13,12 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class AttackController {
+
+    private UserPlayer userPlayer;
+
+    public void setUserPlayer(UserPlayer player) {
+        this.userPlayer = player;
+    }
 
     @FXML
     private Pane root;
@@ -57,10 +65,25 @@ public class AttackController {
         });
     }
 
-    public void loadBattleScene () throws IOException {
-        Parent newRoot = FXMLLoader.load(getClass().getResource("/edu/miracosta/cs112/finalproject/finalproject/battle-scene.fxml"));
+    public void loadBattleScene() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/miracosta/cs112/finalproject/finalproject/battle-scene.fxml"));
+        Parent newRoot = loader.load();
+
+        BattleController battleController = loader.getController();
+        battleController.setUserPlayer(userPlayer); // Pass UserPlayer back
+
         Stage window = (Stage) root.getScene().getWindow();
         window.setScene(new Scene(newRoot));
     }
 
+    public void updateAttackButtons() {
+        System.out.println("In update!");
+        if (userPlayer != null && userPlayer.getCurrentPokemon() != null) {
+            AttackMove[] moves = userPlayer.getCurrentPokemon().getMoveSet(); // Assume this returns 4 strings
+            attack1Button.setText(moves[0].getAttackName());
+            attack2Button.setText(moves[1].getAttackName());
+            attack3Button.setText(moves[2].getAttackName());
+            attack4Button.setText(moves[3].getAttackName());
+        }
+    }
 }
