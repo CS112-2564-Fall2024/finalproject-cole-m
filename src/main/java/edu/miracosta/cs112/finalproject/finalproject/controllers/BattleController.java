@@ -83,7 +83,9 @@ public class BattleController {
         botPokemonImage.setImage(new Image(getClass().getResourceAsStream(botPlayer.getCurrentPokemon().getImagePath())));
     }
 
-    public void initBattleScene() {
+    public void initBattleScene(UserPlayer userPlayer, BotPlayer botPlayer) {
+        setUserPlayer(userPlayer);
+        setBotPlayer(botPlayer);
         setUserPokemonImage();
         setBotPokemonImage();
     }

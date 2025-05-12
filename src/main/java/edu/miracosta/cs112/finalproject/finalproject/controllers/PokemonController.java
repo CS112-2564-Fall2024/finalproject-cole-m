@@ -91,10 +91,7 @@ public class PokemonController {
         Parent newRoot = loader.load();
 
         BattleController battleController = loader.getController();
-        battleController.setUserPlayer(userPlayer);
-        battleController.setBotPlayer(botPlayer);
-        battleController.setUserPokemonImage();
-        battleController.setBotPokemonImage();
+        battleController.initBattleScene(userPlayer, botPlayer);
 
         Stage window = (Stage) root.getScene().getWindow();
         window.setScene(new Scene(newRoot));
