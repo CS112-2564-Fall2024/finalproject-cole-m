@@ -119,4 +119,10 @@ public class AttackController {
             attack4Button.setText(moves[3].getAttackName());
         }
     }
+
+    public void initAttackScene(UserPlayer userPlayer, BotPlayer botPlayer) {
+        this.setUserPlayer(userPlayer);
+        this.setBotPlayer(botPlayer);
+        this.updateAttackButtons();
+    }
 }

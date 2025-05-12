@@ -36,9 +36,7 @@ public class BattleController {
         Parent root = loader.load();
 
         AttackController controller = loader.getController();
-        controller.setUserPlayer(userPlayer);
-        controller.setBotPlayer(botPlayer);
-        controller.updateAttackButtons();
+        controller.initAttackScene(userPlayer, botPlayer);
 
         Stage window = (Stage) fightButton.getScene().getWindow();
         window.setScene(new Scene(root));
@@ -57,9 +55,7 @@ public class BattleController {
         Parent root = loader.load();
 
         PokemonController controller = loader.getController();
-        controller.setUserPlayer(userPlayer);
-        controller.setBotPlayer(botPlayer);
-        controller.updatePokemonButtons();
+        controller.initPokemonScene(userPlayer, botPlayer);
 
         Stage window = (Stage) pokemonButton.getScene().getWindow();
         window.setScene(new Scene(root));
@@ -84,9 +80,9 @@ public class BattleController {
     }
 
     public void initBattleScene(UserPlayer userPlayer, BotPlayer botPlayer) {
-        setUserPlayer(userPlayer);
-        setBotPlayer(botPlayer);
-        setUserPokemonImage();
-        setBotPokemonImage();
+        this.setUserPlayer(userPlayer);
+        this.setBotPlayer(botPlayer);
+        this.setUserPokemonImage();
+        this.setBotPokemonImage();
     }
 }

@@ -116,4 +116,10 @@ public class PokemonController {
             pokemonImage6.setImage(new Image(getClass().getResourceAsStream(pokemons[5].getImagePath())));
         }
     }
+
+    public void initPokemonScene(UserPlayer userPlayer, BotPlayer botPlayer) {
+        this.setUserPlayer(userPlayer);
+        this.setBotPlayer(botPlayer);
+        this.updatePokemonButtons();
+    }
 }
