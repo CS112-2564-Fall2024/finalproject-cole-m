@@ -12,11 +12,11 @@
       <Button fx:id="pokemon2Button" layoutX="304.0" layoutY="77.0" mnemonicParsing="false" onAction="#handlePokemon2" prefHeight="90.0" prefWidth="282.0" text="Pokemon 2" />
       <Button fx:id="pokemon4Button" layoutX="304.0" layoutY="182.0" mnemonicParsing="false" onAction="#handlePokemon4" prefHeight="90.0" prefWidth="282.0" text="Pokemon 4" />
       <Button fx:id="pokemon6Button" layoutX="304.0" layoutY="290.0" mnemonicParsing="false" onAction="#handlePokemon6" prefHeight="90.0" prefWidth="282.0" text="Pokemon 6" />
-      <ImageView fitHeight="90.0" fitWidth="87.0" layoutX="14.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fitHeight="90.0" fitWidth="87.0" layoutX="14.0" layoutY="131.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fitHeight="90.0" fitWidth="87.0" layoutX="304.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fitHeight="90.0" fitWidth="87.0" layoutX="304.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fitHeight="90.0" fitWidth="87.0" layoutX="304.0" layoutY="290.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fitHeight="150.0" fitWidth="87.0" layoutX="14.0" layoutY="239.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="pokemonImage1" fitHeight="90.0" fitWidth="87.0" layoutX="14.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="pokemonImage3" fitHeight="90.0" fitWidth="87.0" layoutX="14.0" layoutY="131.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="pokemonImage2" fitHeight="90.0" fitWidth="87.0" layoutX="304.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="pokemonImage4" fitHeight="90.0" fitWidth="87.0" layoutX="304.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="pokemonImage6" fitHeight="90.0" fitWidth="87.0" layoutX="304.0" layoutY="290.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="pokemonImage5" fitHeight="90.0" fitWidth="87.0" layoutX="14.0" layoutY="239.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </Pane>

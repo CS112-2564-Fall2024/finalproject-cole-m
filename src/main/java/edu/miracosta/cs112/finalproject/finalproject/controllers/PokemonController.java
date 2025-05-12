@@ -1,5 +1,6 @@
 package edu.miracosta.cs112.finalproject.finalproject.controllers;
 import edu.miracosta.cs112.finalproject.finalproject.AttackMove;
+import edu.miracosta.cs112.finalproject.finalproject.BotPlayer;
 import edu.miracosta.cs112.finalproject.finalproject.Pokemon;
 import edu.miracosta.cs112.finalproject.finalproject.UserPlayer;
 import javafx.fxml.FXML;
@@ -17,9 +18,14 @@ import java.io.IOException;
 
 public class PokemonController {
     private UserPlayer userPlayer;
+    private BotPlayer botPlayer;
 
     public void setUserPlayer(UserPlayer player) {
         this.userPlayer = player;
+    }
+
+    public void setBotPlayer(BotPlayer player) {
+        this.botPlayer = player;
     }
 
     @FXML
@@ -86,6 +92,9 @@ public class PokemonController {
 
         BattleController battleController = loader.getController();
         battleController.setUserPlayer(userPlayer);
+        battleController.setBotPlayer(botPlayer);
+        battleController.setUserPokemonImage();
+        battleController.setBotPokemonImage();
 
         Stage window = (Stage) root.getScene().getWindow();
         window.setScene(new Scene(newRoot));

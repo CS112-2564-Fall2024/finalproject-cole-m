@@ -1,36 +1,45 @@
 package edu.miracosta.cs112.finalproject.finalproject.controllers;
 
+import edu.miracosta.cs112.finalproject.finalproject.BotPlayer;
 import edu.miracosta.cs112.finalproject.finalproject.UserPlayer;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import java.io.IOException;
 
 public class BattleController {
-
     private UserPlayer userPlayer;
+    private BotPlayer botPlayer;
 
     public void setUserPlayer(UserPlayer player) {
         this.userPlayer = player;
+    }
+
+    public void setBotPlayer(BotPlayer player) {
+        this.botPlayer = player;
     }
 
     @FXML
     private Button fightButton, healButton, pokemonButton, runButton;
 
     @FXML
+    ImageView userPokemonImage, botPokemonImage;
+
+    @FXML
     private void handleFight() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/miracosta/cs112/finalproject/finalproject/attack-scene.fxml"));
         Parent root = loader.load();
 
-        // Pass the user player to the attack controller
         AttackController controller = loader.getController();
         controller.setUserPlayer(userPlayer);
+        controller.setBotPlayer(botPlayer);
         controller.updateAttackButtons();
 
-        // Switch to the attack scene
         Stage window = (Stage) fightButton.getScene().getWindow();
         window.setScene(new Scene(root));
 
@@ -47,12 +56,11 @@ public class BattleController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/miracosta/cs112/finalproject/finalproject/pokemon-scene.fxml"));
         Parent root = loader.load();
 
-        // Pass the user player to the attack controller
         PokemonController controller = loader.getController();
         controller.setUserPlayer(userPlayer);
+        controller.setBotPlayer(botPlayer);
         controller.updatePokemonButtons();
 
-        // Switch to the attack scene
         Stage window = (Stage) pokemonButton.getScene().getWindow();
         window.setScene(new Scene(root));
 
@@ -62,5 +70,21 @@ public class BattleController {
     @FXML
     private void handleRun() {
         System.out.println("Run button clicked!");
+        System.exit(0);
+    }
+
+    @FXML
+    public void setUserPokemonImage() {
+        userPokemonImage.setImage(new Image(getClass().getResourceAsStream(userPlayer.getCurrentPokemon().getImagePath())));
+    }
+
+    @FXML
+    public void setBotPokemonImage() {
+        botPokemonImage.setImage(new Image(getClass().getResourceAsStream(botPlayer.getCurrentPokemon().getImagePath())));
+    }
+
+    public void initBattleScene() {
+        setUserPokemonImage();
+        setBotPokemonImage();
     }
 }

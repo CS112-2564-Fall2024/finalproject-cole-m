@@ -27,5 +27,7 @@
             </HBox>
          </children>
       </VBox>
+      <ImageView fx:id="userPokemonImage" fitHeight="191.0" fitWidth="211.0" layoutX="51.0" layoutY="171.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="botPokemonImage" fitHeight="150.0" fitWidth="200.0" layoutX="396.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>
