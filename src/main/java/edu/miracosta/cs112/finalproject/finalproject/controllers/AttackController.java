@@ -34,21 +34,49 @@ public class AttackController {
     @FXML
     private void handleAttack1 () {
         System.out.println("Clicked Attack1!");
+        AttackMove move = userPlayer.getCurrentPokemon().getMoveSet()[0];
+        userPlayer.getCurrentPokemon().attack(move, botPlayer.getCurrentPokemon());
+        try {
+            loadBattleScene();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML
     private void handleAttack2 () {
         System.out.println("Clicked Attack2!");
+        AttackMove move = userPlayer.getCurrentPokemon().getMoveSet()[1];
+        userPlayer.getCurrentPokemon().attack(move, botPlayer.getCurrentPokemon());
+        try {
+            loadBattleScene();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML
     private void handleAttack3 () {
         System.out.println("Clicked Attack3!");
+        AttackMove move = userPlayer.getCurrentPokemon().getMoveSet()[2];
+        userPlayer.getCurrentPokemon().attack(move, botPlayer.getCurrentPokemon());
+        try {
+            loadBattleScene();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML
     private void handleAttack4 () {
         System.out.println("Clicked Attack4!");
+        AttackMove move = userPlayer.getCurrentPokemon().getMoveSet()[3];
+        userPlayer.getCurrentPokemon().attack(move, botPlayer.getCurrentPokemon());
+        try {
+            loadBattleScene();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML
