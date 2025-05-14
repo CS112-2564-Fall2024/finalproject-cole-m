@@ -1,10 +1,14 @@
 package edu.miracosta.cs112.finalproject.finalproject;
 
 import edu.miracosta.cs112.finalproject.finalproject.Pokemons.*;
+import edu.miracosta.cs112.finalproject.finalproject.moveSet.Absorb;
+import edu.miracosta.cs112.finalproject.finalproject.moveSet.AquaTail;
+import edu.miracosta.cs112.finalproject.finalproject.moveSet.DizzyPunch;
+import edu.miracosta.cs112.finalproject.finalproject.moveSet.Inferno;
 
 public class Main {
     public static void main(String[] args) {
-        Player user = new Player(new Pokemon[]{
+        BotPlayer user = new BotPlayer(new Pokemon[]{
                 new Chimchar(),
                 new Blastoise(),
                 new Treecko(),
@@ -13,16 +17,21 @@ public class Main {
                 new Kyogre()},
                 6, 10);
 
-         Player opponent = new Player(new Pokemon[]{
-                 new Venusar(),
-                 new Treecko(),
-                 new Serperior(),
-                 new Oshawott(),
-                 new Psyduck(),
-                 new Magikarp()},
-                 6, 10);
+        BotPlayer p2 = new BotPlayer(new Pokemon[]{
+                new Kyogre(),
+                new Blastoise(),
+                new Treecko(),
+                new Floatzel(),
+                new Hooh(),
+                new Chimchar()},
+                6, 10);
 
-        user.getPokemons()[2].setHp(80);
-        user.healPokemon(user.getPokemons()[2]);
+        for(int i=0; i<5; i++) {
+            System.out.println(user.getCurrentPokemon().getName());
+            user.commandAttack(p2.getCurrentPokemon());
+            p2.healPokemon();
+            user.switchPokemon();
+            System.out.println();
+        }
     }
 }
