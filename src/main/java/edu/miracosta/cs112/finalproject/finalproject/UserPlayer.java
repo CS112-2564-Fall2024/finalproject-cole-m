@@ -6,8 +6,8 @@ import java.util.Random;
 
 public class UserPlayer extends Player{
 
-    public UserPlayer(Pokemon[] pokemons, int pokemonCount, int potionsCount) {
-        super(pokemons, pokemonCount, potionsCount);
+    public UserPlayer(Pokemon[] pokemons, int pokemonCount, int maxPotionsCount, int potionsCount) {
+        super(pokemons, pokemonCount, maxPotionsCount, potionsCount);
     }
 
     public Pokemon switchPokemon() {

@@ -6,18 +6,19 @@ abstract class Player {
     private Pokemon[] pokemons;
     private Pokemon currentPokemon;
     private int pokemonCount;
+    private int maxPotionsCount;
     private int potionsCount;
 
-    public Player(Pokemon[] pokemons, int pokemonCount, int potionsCount) {
-        this.setAll(pokemons, pokemons[0], pokemonCount, potionsCount);
+    public Player(Pokemon[] pokemons, int pokemonCount, int maxPotionsCount, int potionsCount) {
+        this.setAll(pokemons, pokemons[0], pokemonCount, maxPotionsCount, potionsCount);
     }
 
     public Player() {
-        this.setAll(new Pokemon[6], new Chimchar(), 1, 5);
+        this.setAll(new Pokemon[6], new Chimchar(), 1, 5, 5);
     }
 
     public Player(Player copy) {
-        this.setAll(copy.pokemons, copy.currentPokemon, copy.pokemonCount, copy.potionsCount);
+        this.setAll(copy.pokemons, copy.currentPokemon, copy.pokemonCount, copy.maxPotionsCount, copy.potionsCount);
     }
 
     public void setPokemons(Pokemon[] pokemons) {
@@ -37,16 +38,23 @@ abstract class Player {
         }
     }
 
+    public void setMaxPotionsCount(int maxPotionsCount) {
+        if (maxPotionsCount >= 0) {
+            this.maxPotionsCount = maxPotionsCount;
+        }
+    }
+
     public void setPotionsCount(int potionsCount) {
         if (potionsCount >= 0) {
             this.potionsCount = potionsCount;
         }
     }
 
-    public void setAll(Pokemon[] pokemons, Pokemon currentPokemon, int pokemonCount, int potionsCount) {
+    public void setAll(Pokemon[] pokemons, Pokemon currentPokemon, int pokemonCount, int maxPotionsCount, int potionsCount) {
         this.setPokemons(pokemons);
         this.setCurrentPokemon(currentPokemon);
         this.setPokemonCount(pokemonCount);
+        this.setMaxPotionsCount(maxPotionsCount);
         this.setPotionsCount(potionsCount);
     }
 
@@ -60,6 +68,10 @@ abstract class Player {
 
     public int getPokemonCount() {
         return this.pokemonCount;
+    }
+
+    public int getMaxPotionsCount() {
+        return this.maxPotionsCount;
     }
 
     public int getPotionsCount() {
@@ -80,6 +92,7 @@ abstract class Player {
         return "Player: Pokemons = [" + pokemonNames + "]" +
                 ", CurrentPokemon = " + this.currentPokemon +
                 ", PokemonCount = " + this.pokemonCount +
+                ", MaxPotionsCount = " + this.maxPotionsCount +
                 ", PotionsCount = " + this.potionsCount;
     }
 
@@ -93,6 +106,9 @@ abstract class Player {
                 return false;
             }
             if (this.pokemonCount != otherPlayer.pokemonCount) {
+                return false;
+            }
+            if (this.maxPotionsCount != otherPlayer.maxPotionsCount) {
                 return false;
             }
             if (this.potionsCount != otherPlayer.potionsCount) {

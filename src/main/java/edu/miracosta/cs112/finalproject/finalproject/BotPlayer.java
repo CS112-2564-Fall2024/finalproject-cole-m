@@ -3,8 +3,8 @@ import java.util.Random;
 
 public class BotPlayer extends Player {
 
-    public BotPlayer(Pokemon[] pokemons, int pokemonCount, int potionsCount) {
-        super(pokemons, pokemonCount, potionsCount);
+    public BotPlayer(Pokemon[] pokemons, int pokemonCount, int maxPotionsCount, int potionsCount) {
+        super(pokemons, pokemonCount, maxPotionsCount, potionsCount);
     }
 
     public Pokemon switchPokemon() {

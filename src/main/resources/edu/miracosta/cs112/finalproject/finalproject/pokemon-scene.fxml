@@ -6,6 +6,11 @@
 
 <Pane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.miracosta.cs112.finalproject.finalproject.controllers.PokemonController">
    <children>
+      <ImageView fitHeight="618.0" fitWidth="407.0" layoutX="97.0" layoutY="-109.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
+         <image>
+            <Image url="@../../../../../images/pokedex1.png" />
+         </image>
+      </ImageView>
       <Button fx:id="pokemon1Button" layoutX="14.0" layoutY="26.0" mnemonicParsing="false" onAction="#handlePokemon1" prefHeight="90.0" prefWidth="282.0" text="Pokemon 1" />
       <Button fx:id="pokemon3Button" layoutX="14.0" layoutY="131.0" mnemonicParsing="false" onAction="#handlePokemon3" prefHeight="90.0" prefWidth="282.0" text="Pokemon 3" />
       <Button fx:id="pokemon5Button" layoutX="14.0" layoutY="239.0" mnemonicParsing="false" onAction="#handlePokemon5" prefHeight="90.0" prefWidth="282.0" text="Pokemon 5" />

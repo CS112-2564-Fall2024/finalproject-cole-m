@@ -4,18 +4,19 @@ public class AttackMove {
     private String attackName;
     private String type;
     private int damageAmount;
+    private int maxAttackCount;
     private int attacksLeft;
 
     public AttackMove() {
-        this.setAll("N/A", "N/A", -1, -1);
+        this.setAll("N/A", "N/A", -1, -1, -1);
     }
 
-    public AttackMove(String attackName, String type, int damageAmount, int attacksLeft) {
-        this.setAll(attackName, type, damageAmount, attacksLeft);
+    public AttackMove(String attackName, String type, int damageAmount, int maxAttackCount, int attacksLeft) {
+        this.setAll(attackName, type, damageAmount, maxAttackCount, attacksLeft);
     }
 
     public AttackMove(AttackMove copy) {
-        this.setAll(copy.attackName, copy.type, copy.damageAmount, copy.attacksLeft);
+        this.setAll(copy.attackName, copy.type, copy.damageAmount, copy.maxAttackCount, copy.attacksLeft);
     }
 
     public void setAttackName(String attackName) {
@@ -30,14 +31,19 @@ public class AttackMove {
         this.damageAmount = damageAmount;
     }
 
+    public void setMaxAttackCount(int maxAttackCount) {
+        this.maxAttackCount = maxAttackCount;
+    }
+
     public void setAttacksLeft(int attacksLeft) {
         this.attacksLeft = attacksLeft;
     }
 
-    public void setAll(String attackName, String type, int damageAmount, int attacksLeft) {
+    public void setAll(String attackName, String type, int damageAmount, int maxAttackCount, int attacksLeft) {
         this.setAttackName(attackName);
         this.setType(type);
         this.setDamageAmount(damageAmount);
+        this.setMaxAttackCount(maxAttackCount);
         this.setAttacksLeft(attacksLeft);
     }
 
@@ -53,6 +59,10 @@ public class AttackMove {
         return this.damageAmount;
     }
 
+    public int getMaxAttackCount() {
+        return this.maxAttackCount;
+    }
+
     public int getAttacksLeft() {
         return this.attacksLeft;
     }
@@ -62,6 +72,7 @@ public class AttackMove {
         return "AttackMove: AttackName = " + this.attackName +
                 ", Type = " + this.type +
                 ", DamageAmount = " + this.damageAmount +
+                ", MaxAttacks = " + this.maxAttackCount +
                 ", AttacksLeft = " + this.attacksLeft;
     }
 
@@ -78,6 +89,9 @@ public class AttackMove {
                 return false;
             }
             if (this.damageAmount != otherAttackMove.damageAmount) {
+                return false;
+            }
+            if (this.maxAttackCount != otherAttackMove.maxAttackCount) {
                 return false;
             }
             if (this.attacksLeft != otherAttackMove.attacksLeft) {

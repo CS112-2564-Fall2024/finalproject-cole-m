@@ -7,9 +7,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 
 public class BattleController {
@@ -31,6 +33,9 @@ public class BattleController {
     ImageView userPokemonImage, botPokemonImage;
 
     @FXML
+    TextField healCountText;
+
+    @FXML
     private void handleFight() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/miracosta/cs112/finalproject/finalproject/attack-scene.fxml"));
         Parent root = loader.load();
@@ -46,6 +51,8 @@ public class BattleController {
 
     @FXML
     private void handleHeal() {
+        userPlayer.setPotionsCount(userPlayer.getPotionsCount() - 1);
+        this.setHealText();
         System.out.println("Heal button clicked!");
     }
 
@@ -79,10 +86,15 @@ public class BattleController {
         botPokemonImage.setImage(new Image(getClass().getResourceAsStream(botPlayer.getCurrentPokemon().getImagePath())));
     }
 
+    public void setHealText() {
+        healCountText.setText(userPlayer.getPotionsCount() + " / " + userPlayer.getMaxPotionsCount());
+    }
     public void initBattleScene(UserPlayer userPlayer, BotPlayer botPlayer) {
         this.setUserPlayer(userPlayer);
         this.setBotPlayer(botPlayer);
         this.setUserPokemonImage();
         this.setBotPokemonImage();
+        this.setHealText();
+
     }
 }

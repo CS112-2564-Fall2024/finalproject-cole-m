@@ -24,7 +24,7 @@ public class HelloApplication extends Application {
                 new Floatzel(),
                 new Hooh(),
                 new Kyogre()},
-                6, 10);
+                6, 10, 10);
         BotPlayer botPlayer = new BotPlayer(new Pokemon[]{
                 new Kyogre(),
                 new Blastoise(),
@@ -32,11 +32,8 @@ public class HelloApplication extends Application {
                 new Floatzel(),
                 new Hooh(),
                 new Chimchar()},
-                6, 10);
-        controller.setUserPlayer(userPlayer);
-        controller.setBotPlayer(botPlayer);
-        controller.setUserPokemonImage();
-        controller.setBotPokemonImage();
+                6, 10, 10);
+        controller.initBattleScene(userPlayer, botPlayer);
 
         stage.setTitle("Pokemon Battle!");
         stage.setScene(scene);

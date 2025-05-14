@@ -146,17 +146,36 @@ public class PokemonController {
 
             pokemon1Button.setText(pokemons[0].getName());
             pokemonImage1.setImage(new Image(getClass().getResourceAsStream(pokemons[0].getImagePath())));
+//            pokemon1Button.setStyle(getStyle(pokemons[0]));
             pokemon2Button.setText(pokemons[1].getName());
             pokemonImage2.setImage(new Image(getClass().getResourceAsStream(pokemons[1].getImagePath())));
+//            pokemon2Button.setStyle(getStyle(pokemons[1]));
             pokemon3Button.setText(pokemons[2].getName());
             pokemonImage3.setImage(new Image(getClass().getResourceAsStream(pokemons[2].getImagePath())));
+//            pokemon3Button.setStyle(getStyle(pokemons[2]));
             pokemon4Button.setText(pokemons[3].getName());
             pokemonImage4.setImage(new Image(getClass().getResourceAsStream(pokemons[3].getImagePath())));
+//            pokemon4Button.setStyle(getStyle(pokemons[3]));
             pokemon5Button.setText(pokemons[4].getName());
             pokemonImage5.setImage(new Image(getClass().getResourceAsStream(pokemons[4].getImagePath())));
+//            pokemon5Button.setStyle(getStyle(pokemons[4]));
             pokemon6Button.setText(pokemons[5].getName());
             pokemonImage6.setImage(new Image(getClass().getResourceAsStream(pokemons[5].getImagePath())));
+//            pokemon6Button.setStyle(getStyle(pokemons[5]));
         }
+    }
+
+    public String getStyle(Pokemon pokemon) {
+        if(pokemon.getType().equals("Fire")) {
+            return "-fx-background-color: #ef3939; -fx-text-fill: white; -fx-font-size: 30px; -fx-border-color: #c12d2d;  -fx-border-width: 4px; -fx-effect: dropshadow(one-pass-box, black, 15, 0.0, 0, 0);";
+        }
+        if(pokemon.getType().equals("Water")) {
+            return "-fx-background-color: #638bcc; -fx-text-fill: white; -fx-font-size: 30px; -fx-border-color: #5274aa;  -fx-border-width: 4px; -fx-effect: dropshadow(one-pass-box, black, 15, 0.0, 0, 0);";
+        }
+        if(pokemon.getType().equals("Grass")) {
+            return "-fx-background-color: #5ab429; -fx-text-fill: white; -fx-font-size: 30px; -fx-border-color: #4a9823;  -fx-border-width: 4px; -fx-effect: dropshadow(one-pass-box, black, 15, 0.0, 0, 0);";
+        }
+        return "-fx-background-color: #949494; -fx-text-fill: white; -fx-font-size: 30px; -fx-border-color: #7a7a7a;  -fx-border-width: 4px; -fx-effect: dropshadow(one-pass-box, black, 15, 0.0, 0, 0);";
     }
 
     public void initPokemonScene(UserPlayer userPlayer, BotPlayer botPlayer) {

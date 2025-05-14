@@ -139,6 +139,7 @@ public class Pokemon {
     }
 
     public boolean attack(AttackMove attackMove, Pokemon opponentPokemon) {
+        attackMove.setAttacksLeft(attackMove.getAttacksLeft() - 1);
         int currentOppHP = opponentPokemon.getHp();
         int damage = attackMove.getDamageAmount();
 
@@ -199,6 +200,7 @@ public class Pokemon {
             opponentPokemon.setHp(currentOppHP - (int) damage);
             System.out.println(attackMove.getAttackName() + " was used and dealt " + damage + " damage to " + opponentPokemon.getName() + ".\n");
         }
+
 
         if(opponentPokemon.getHp() < 0) {
             System.out.println(opponentPokemon.getName() + " was knocked out!");

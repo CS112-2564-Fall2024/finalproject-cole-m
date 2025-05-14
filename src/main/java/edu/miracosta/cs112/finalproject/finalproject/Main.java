@@ -15,7 +15,7 @@ public class Main {
                 new Floatzel(),
                 new Hooh(),
                 new Kyogre()},
-                6, 10);
+                6, 10, 10);
 
         BotPlayer p2 = new BotPlayer(new Pokemon[]{
                 new Kyogre(),
@@ -24,7 +24,7 @@ public class Main {
                 new Floatzel(),
                 new Hooh(),
                 new Chimchar()},
-                6, 10);
+                6, 10, 10);
 
         for(int i=0; i<5; i++) {
             System.out.println(user.getCurrentPokemon().getName());
