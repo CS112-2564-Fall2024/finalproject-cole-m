@@ -55,8 +55,10 @@ public class BattleManager {
                 System.out.println("Game Over");
                 System.exit(0);
             }
+        } else {
+            botTurn();
         }
-        botTurn();
+
 
     }
 

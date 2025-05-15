@@ -3,11 +3,13 @@ package edu.miracosta.cs112.finalproject.finalproject.controllers;
 import edu.miracosta.cs112.finalproject.finalproject.BattleManager;
 import edu.miracosta.cs112.finalproject.finalproject.BotPlayer;
 import edu.miracosta.cs112.finalproject.finalproject.Player;
+import edu.miracosta.cs112.finalproject.finalproject.Pokemon;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -30,6 +32,9 @@ public class BattleController {
     TextField healCountText;
 
     @FXML
+    ProgressBar userHPProgressBar, botHPProgressBar;
+
+    @FXML
     private void handleFight() throws IOException {
         loadAttackScene();
 
@@ -38,8 +43,14 @@ public class BattleController {
 
     @FXML
     private void handleHeal() {
-        userPlayer.setPotionsCount(userPlayer.getPotionsCount() - 1);
-        this.setHealText();
+        try {
+            userPlayer.healPokemon();
+            userPlayer.setPotionsCount(userPlayer.getPotionsCount() - 1);
+            this.setHealText();
+            this.updateUserHPBar(userPlayer.getCurrentPokemon());
+        } catch (Exception e) {
+            System.out.println("No more potions");
+        }
         System.out.println("Heal button clicked!");
     }
 
@@ -92,11 +103,22 @@ public class BattleController {
         window.setScene(new Scene(root));
     }
 
+    public void updateUserHPBar(Pokemon pokemon) {
+        float currentHP = (float) pokemon.getHp() / pokemon.getMaxHP();
+        userHPProgressBar.setProgress(currentHP);
+    }
+
+    public void updateBotHPBar(Pokemon pokemon) {
+        float currentHP = (float) pokemon.getHp() / pokemon.getMaxHP();
+        botHPProgressBar.setProgress(currentHP);
+    }
+
     public void initBattleScene() {
         this.userPlayer = manager.getUserPlayer();
         this.botPlayer = manager.getBotPlayer();
         this.setUserPokemonImage();
         this.setBotPokemonImage();
         this.setHealText();
+        this.updateUserHPBar(userPlayer.getCurrentPokemon());
     }
 }
