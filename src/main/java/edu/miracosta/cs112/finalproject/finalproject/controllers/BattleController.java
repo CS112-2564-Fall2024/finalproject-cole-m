@@ -37,14 +37,7 @@ public class BattleController {
 
     @FXML
     private void handleFight() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/miracosta/cs112/finalproject/finalproject/attack-scene.fxml"));
-        Parent root = loader.load();
-
-        AttackController controller = loader.getController();
-        controller.initAttackScene(userPlayer, botPlayer);
-
-        Stage window = (Stage) fightButton.getScene().getWindow();
-        window.setScene(new Scene(root));
+        loadAttackScene();
 
         System.out.println("Fight button clicked!");
     }
@@ -58,14 +51,7 @@ public class BattleController {
 
     @FXML
     private void handlePokemon() throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/miracosta/cs112/finalproject/finalproject/pokemon-scene.fxml"));
-        Parent root = loader.load();
-
-        PokemonController controller = loader.getController();
-        controller.initPokemonScene(userPlayer, botPlayer);
-
-        Stage window = (Stage) pokemonButton.getScene().getWindow();
-        window.setScene(new Scene(root));
+        loadPokemonScene();
 
         System.out.println("Pokemon button clicked!");
     }
@@ -89,6 +75,29 @@ public class BattleController {
     public void setHealText() {
         healCountText.setText(userPlayer.getPotionsCount() + " / " + userPlayer.getMaxPotionsCount());
     }
+
+    public void loadAttackScene() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/miracosta/cs112/finalproject/finalproject/attack-scene.fxml"));
+        Parent root = loader.load();
+
+        AttackController controller = loader.getController();
+        controller.initAttackScene(userPlayer, botPlayer);
+
+        Stage window = (Stage) fightButton.getScene().getWindow();
+        window.setScene(new Scene(root));
+    }
+
+    public void loadPokemonScene() throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/miracosta/cs112/finalproject/finalproject/pokemon-scene.fxml"));
+        Parent root = loader.load();
+
+        PokemonController controller = loader.getController();
+        controller.initPokemonScene(userPlayer, botPlayer);
+
+        Stage window = (Stage) pokemonButton.getScene().getWindow();
+        window.setScene(new Scene(root));
+    }
+
     public void initBattleScene(UserPlayer userPlayer, BotPlayer botPlayer) {
         this.setUserPlayer(userPlayer);
         this.setBotPlayer(botPlayer);

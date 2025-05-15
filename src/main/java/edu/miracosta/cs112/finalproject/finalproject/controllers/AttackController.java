@@ -132,11 +132,6 @@ public class AttackController {
         }
     }
 
-    public void initAttackScene(UserPlayer userPlayer, BotPlayer botPlayer) {
-        this.setUserPlayer(userPlayer);
-        this.setBotPlayer(botPlayer);
-        this.updateAttackButtons();
-    }
 
     public String getStyle(AttackMove move) {
         if(move.getType().equals("Fire")) {
@@ -149,5 +144,11 @@ public class AttackController {
             return "-fx-background-color: #5ab429; -fx-text-fill: white; -fx-font-size: 30px; -fx-border-color: #4a9823;  -fx-border-width: 4px; -fx-effect: dropshadow(one-pass-box, black, 15, 0.0, 0, 0);";
         }
         return "-fx-background-color: #949494; -fx-text-fill: white; -fx-font-size: 30px; -fx-border-color: #7a7a7a;  -fx-border-width: 4px; -fx-effect: dropshadow(one-pass-box, black, 15, 0.0, 0, 0);";
+    }
+
+    public void initAttackScene(UserPlayer userPlayer, BotPlayer botPlayer) {
+        this.setUserPlayer(userPlayer);
+        this.setBotPlayer(botPlayer);
+        this.updateAttackButtons();
     }
 }

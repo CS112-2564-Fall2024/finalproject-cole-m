@@ -111,7 +111,6 @@ public class PokemonController {
 
     @FXML
     public void initialize() {
-        // Wait until scene is available to set key listener
         root.sceneProperty().addListener((obs, oldScene, newScene) -> {
             if (newScene != null) {
                 newScene.addEventHandler(KeyEvent.KEY_PRESSED, event -> {
