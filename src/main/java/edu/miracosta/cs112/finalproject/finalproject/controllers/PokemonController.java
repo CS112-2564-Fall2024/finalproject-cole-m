@@ -1,8 +1,5 @@
 package edu.miracosta.cs112.finalproject.finalproject.controllers;
-import edu.miracosta.cs112.finalproject.finalproject.AttackMove;
-import edu.miracosta.cs112.finalproject.finalproject.BotPlayer;
-import edu.miracosta.cs112.finalproject.finalproject.Pokemon;
-import edu.miracosta.cs112.finalproject.finalproject.UserPlayer;
+import edu.miracosta.cs112.finalproject.finalproject.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,16 +14,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class PokemonController {
-    private UserPlayer userPlayer;
-    private BotPlayer botPlayer;
-
-    public void setUserPlayer(UserPlayer player) {
-        this.userPlayer = player;
-    }
-
-    public void setBotPlayer(BotPlayer player) {
-        this.botPlayer = player;
-    }
+    private final BattleManager manager = BattleManager.getInstance();
+    private UserPlayer userPlayer = manager.getUserPlayer();
+    private BotPlayer botPlayer = manager.getBotPlayer();
 
     @FXML
     private Pane root;
@@ -132,7 +122,7 @@ public class PokemonController {
         Parent newRoot = loader.load();
 
         BattleController battleController = loader.getController();
-        battleController.initBattleScene(userPlayer, botPlayer);
+        battleController.initBattleScene();
 
         Stage window = (Stage) root.getScene().getWindow();
         window.setScene(new Scene(newRoot));
@@ -177,9 +167,9 @@ public class PokemonController {
         return "-fx-background-color: #949494; -fx-text-fill: white; -fx-font-size: 30px; -fx-border-color: #7a7a7a;  -fx-border-width: 4px; -fx-effect: dropshadow(one-pass-box, black, 15, 0.0, 0, 0);";
     }
 
-    public void initPokemonScene(UserPlayer userPlayer, BotPlayer botPlayer) {
-        this.setUserPlayer(userPlayer);
-        this.setBotPlayer(botPlayer);
+    public void initPokemonScene() {
+        this.userPlayer = manager.getUserPlayer();
+        this.botPlayer = manager.getBotPlayer();
         this.updatePokemonButtons();
     }
 }

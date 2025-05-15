@@ -1,5 +1,6 @@
 package edu.miracosta.cs112.finalproject.finalproject.controllers;
 
+import edu.miracosta.cs112.finalproject.finalproject.BattleManager;
 import edu.miracosta.cs112.finalproject.finalproject.BotPlayer;
 import edu.miracosta.cs112.finalproject.finalproject.UserPlayer;
 import javafx.fxml.FXML;
@@ -15,16 +16,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class BattleController {
-    private UserPlayer userPlayer;
-    private BotPlayer botPlayer;
-
-    public void setUserPlayer(UserPlayer player) {
-        this.userPlayer = player;
-    }
-
-    public void setBotPlayer(BotPlayer player) {
-        this.botPlayer = player;
-    }
+    private final BattleManager manager = BattleManager.getInstance();
+    private UserPlayer userPlayer = manager.getUserPlayer();
+    private BotPlayer botPlayer = manager.getBotPlayer();
 
     @FXML
     private Button fightButton, healButton, pokemonButton, runButton;
@@ -81,7 +75,7 @@ public class BattleController {
         Parent root = loader.load();
 
         AttackController controller = loader.getController();
-        controller.initAttackScene(userPlayer, botPlayer);
+        controller.initAttackScene();
 
         Stage window = (Stage) fightButton.getScene().getWindow();
         window.setScene(new Scene(root));
@@ -92,18 +86,17 @@ public class BattleController {
         Parent root = loader.load();
 
         PokemonController controller = loader.getController();
-        controller.initPokemonScene(userPlayer, botPlayer);
+        controller.initPokemonScene();
 
         Stage window = (Stage) pokemonButton.getScene().getWindow();
         window.setScene(new Scene(root));
     }
 
-    public void initBattleScene(UserPlayer userPlayer, BotPlayer botPlayer) {
-        this.setUserPlayer(userPlayer);
-        this.setBotPlayer(botPlayer);
+    public void initBattleScene() {
+        this.userPlayer = manager.getUserPlayer();
+        this.botPlayer = manager.getBotPlayer();
         this.setUserPokemonImage();
         this.setBotPokemonImage();
         this.setHealText();
-
     }
 }

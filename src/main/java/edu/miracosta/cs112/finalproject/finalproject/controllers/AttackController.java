@@ -1,5 +1,6 @@
 package edu.miracosta.cs112.finalproject.finalproject.controllers;
 import edu.miracosta.cs112.finalproject.finalproject.AttackMove;
+import edu.miracosta.cs112.finalproject.finalproject.BattleManager;
 import edu.miracosta.cs112.finalproject.finalproject.BotPlayer;
 import edu.miracosta.cs112.finalproject.finalproject.UserPlayer;
 import javafx.fxml.FXML;
@@ -15,16 +16,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class AttackController {
+    private final BattleManager manager = BattleManager.getInstance();
     private UserPlayer userPlayer;
     private BotPlayer botPlayer;
-
-    public void setUserPlayer(UserPlayer player) {
-        this.userPlayer = player;
-    }
-
-    public void setBotPlayer(BotPlayer player) {
-        this.botPlayer = player;
-    }
 
     @FXML
     private Pane root;
@@ -39,7 +33,6 @@ public class AttackController {
     private void handleAttack1 () {
         System.out.println("Clicked Attack1!");
         AttackMove move = userPlayer.getCurrentPokemon().getMoveSet()[0];
-        userPlayer.getCurrentPokemon().attack(move, botPlayer.getCurrentPokemon());
         try {
             loadBattleScene();
         } catch (IOException e) {
@@ -107,7 +100,7 @@ public class AttackController {
         Parent newRoot = loader.load();
 
         BattleController battleController = loader.getController();
-        battleController.initBattleScene(userPlayer, botPlayer);
+        battleController.initBattleScene();
 
         Stage window = (Stage) root.getScene().getWindow();
         window.setScene(new Scene(newRoot));
@@ -146,9 +139,9 @@ public class AttackController {
         return "-fx-background-color: #949494; -fx-text-fill: white; -fx-font-size: 30px; -fx-border-color: #7a7a7a;  -fx-border-width: 4px; -fx-effect: dropshadow(one-pass-box, black, 15, 0.0, 0, 0);";
     }
 
-    public void initAttackScene(UserPlayer userPlayer, BotPlayer botPlayer) {
-        this.setUserPlayer(userPlayer);
-        this.setBotPlayer(botPlayer);
+    public void initAttackScene() {
+        this.userPlayer = manager.getUserPlayer();
+        this.botPlayer = manager.getBotPlayer();
         this.updateAttackButtons();
     }
 }
