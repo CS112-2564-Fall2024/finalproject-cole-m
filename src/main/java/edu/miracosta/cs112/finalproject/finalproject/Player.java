@@ -149,7 +149,7 @@ public class Player {
                     System.out.println(this.getCurrentPokemon().getName() + " was healed to a HP of " + this.getCurrentPokemon().getHp());
                 }
 
-                potionsLeft--;
+                this.setPotionsCount(potionsLeft - 1);
             } else {
                 System.out.println(this.getCurrentPokemon().getName() + " is knocked out");
             }

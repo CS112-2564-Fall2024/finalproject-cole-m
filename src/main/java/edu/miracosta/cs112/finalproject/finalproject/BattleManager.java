@@ -53,7 +53,7 @@ public class BattleManager {
             } catch (Exception e) {
                 System.out.println("Bot ran out of pokemons!");
                 System.out.println("Game Over");
-                //TODO Game Over
+                System.exit(0);
             }
         }
         botTurn();
@@ -76,7 +76,9 @@ public class BattleManager {
                 try {
                     showPokemonSwitchScene();
                 } catch (Exception e) {
-                    System.out.println(e);
+                    System.out.println("PLayer ran out of pokemons!");
+                    System.out.println("Game Over");
+                    System.exit(0);
                 }
             }
 
