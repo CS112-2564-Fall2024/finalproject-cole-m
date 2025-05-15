@@ -33,7 +33,7 @@ public class HelloApplication extends Application {
                 new Hooh(),
                 new Chimchar()},
                 6, 10, 10);
-        BattleManager.getInstance().init(userPlayer, botPlayer);
+        BattleManager.getInstance().init(userPlayer, botPlayer, stage);
         controller.initBattleScene();
 
         stage.setTitle("Pokemon Battle!");

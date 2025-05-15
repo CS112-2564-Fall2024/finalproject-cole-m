@@ -39,7 +39,7 @@ public class PokemonController {
                 throw new RuntimeException(e);
             }
         } else {
-            System.out.println("Pokemon is knocked out");
+            System.out.println(pokemon.getName() + " is knocked out");
         }
     }
 
@@ -55,7 +55,7 @@ public class PokemonController {
                 throw new RuntimeException(e);
             }
         } else {
-            System.out.println("Pokemon is knocked out");
+            System.out.println(pokemon.getName() + " is knocked out");
         }
     }
 
@@ -71,7 +71,7 @@ public class PokemonController {
                 throw new RuntimeException(e);
             }
         } else {
-            System.out.println("Pokemon is knocked out");
+            System.out.println(pokemon.getName() + " is knocked out");
         }
     }
 
@@ -87,7 +87,7 @@ public class PokemonController {
                 throw new RuntimeException(e);
             }
         } else {
-            System.out.println("Pokemon is knocked out");
+            System.out.println(pokemon.getName() + " is knocked out");
         }
     }
 
@@ -103,7 +103,7 @@ public class PokemonController {
                 throw new RuntimeException(e);
             }
         } else {
-            System.out.println("Pokemon is knocked out");
+            System.out.println(pokemon.getName() + " is knocked out");
         }
     }
 
@@ -119,7 +119,7 @@ public class PokemonController {
                 throw new RuntimeException(e);
             }
         } else {
-            System.out.println("Pokemon is knocked out");
+            System.out.println(pokemon.getName() + " is knocked out");
         }
     }
 

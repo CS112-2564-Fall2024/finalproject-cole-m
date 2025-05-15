@@ -14,6 +14,7 @@ public class BattleManager {
     private static final BattleManager instance = new BattleManager();
     private Player userPlayer;
     private BotPlayer botPlayer;
+    private Stage primaryStage;
 
     public BattleManager() {
     }
@@ -22,9 +23,10 @@ public class BattleManager {
         return instance;
     }
 
-    public void init(Player userPlayer, BotPlayer botPlayer) {
+    public void init(Player userPlayer, BotPlayer botPlayer, Stage stage) {
         this.userPlayer = userPlayer;
         this.botPlayer = botPlayer;
+        this.primaryStage = stage;
     }
 
     public Player getUserPlayer() {
@@ -33,6 +35,10 @@ public class BattleManager {
 
     public BotPlayer getBotPlayer() {
         return this.botPlayer;
+    }
+
+    public Stage getPrimaryStage() {
+        return primaryStage;
     }
 
     public void playerAttack(int index) {
@@ -44,13 +50,13 @@ public class BattleManager {
         if (!checkAlive(botPokemon)) {
             try {
                 botPlayer.switchPokemon();
-                botTurn();
             } catch (Exception e) {
                 System.out.println("Bot ran out of pokemons!");
                 System.out.println("Game Over");
                 //TODO Game Over
             }
         }
+        botTurn();
 
     }
 
@@ -58,7 +64,10 @@ public class BattleManager {
         Pokemon userPokemon = this.userPlayer.getCurrentPokemon();
         Pokemon botPokemon = this.botPlayer.getCurrentPokemon();
 
-        float percentHealth = botPokemon.getHp() / botPokemon.getMaxHP();
+        float percentHealth = (float)botPokemon.getHp() / botPokemon.getMaxHP();
+        System.out.println(percentHealth);
+        System.out.println(botPokemon.getHp());
+        System.out.println(botPokemon.getMaxHP());
         if(percentHealth < 0.5) {
             botPlayer.healPokemon();
         } else {
@@ -67,7 +76,7 @@ public class BattleManager {
                 try {
                     showPokemonSwitchScene();
                 } catch (Exception e) {
-                    System.out.println("Hi");
+                    System.out.println(e);
                 }
             }
 
@@ -87,10 +96,8 @@ public class BattleManager {
         PokemonController controller = loader.getController();
         controller.initPokemonScene();
 
-        // You need access to the current stage
-        Stage stage = (Stage) javafx.stage.Window.getWindows().filtered(Window::isShowing).get(0);
-        stage.setScene(new Scene(root));
-        stage.show();
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
     }
 
     @Override
