@@ -15,7 +15,7 @@ import java.io.IOException;
 
 public class PokemonController {
     private final BattleManager manager = BattleManager.getInstance();
-    private UserPlayer userPlayer = manager.getUserPlayer();
+    private Player userPlayer = manager.getUserPlayer();
     private BotPlayer botPlayer = manager.getBotPlayer();
 
     @FXML
@@ -31,11 +31,15 @@ public class PokemonController {
     private void handlePokemon1() {
         System.out.println("Clicked Pokemon1!");
         Pokemon pokemon = userPlayer.getPokemons()[0];
-        userPlayer.setCurrentPokemon(pokemon);
-        try {
-            loadBattleScene();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        if(manager.checkAlive(pokemon)) {
+            userPlayer.setCurrentPokemon(pokemon);
+            try {
+                loadBattleScene();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        } else {
+            System.out.println("Pokemon is knocked out");
         }
     }
 
@@ -43,11 +47,15 @@ public class PokemonController {
     private void handlePokemon2() {
         System.out.println("Clicked Pokemon2!");
         Pokemon pokemon = userPlayer.getPokemons()[1];
-        userPlayer.setCurrentPokemon(pokemon);
-        try {
-            loadBattleScene();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        if(manager.checkAlive(pokemon)) {
+            userPlayer.setCurrentPokemon(pokemon);
+            try {
+                loadBattleScene();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        } else {
+            System.out.println("Pokemon is knocked out");
         }
     }
 
@@ -55,11 +63,15 @@ public class PokemonController {
     private void handlePokemon3() {
         System.out.println("Clicked Pokemon3!");
         Pokemon pokemon = userPlayer.getPokemons()[2];
-        userPlayer.setCurrentPokemon(pokemon);
-        try {
-            loadBattleScene();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        if(manager.checkAlive(pokemon)) {
+            userPlayer.setCurrentPokemon(pokemon);
+            try {
+                loadBattleScene();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        } else {
+            System.out.println("Pokemon is knocked out");
         }
     }
 
@@ -67,11 +79,15 @@ public class PokemonController {
     private void handlePokemon4() {
         System.out.println("Clicked Pokemon4!");
         Pokemon pokemon = userPlayer.getPokemons()[3];
-        userPlayer.setCurrentPokemon(pokemon);
-        try {
-            loadBattleScene();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        if(manager.checkAlive(pokemon)) {
+            userPlayer.setCurrentPokemon(pokemon);
+            try {
+                loadBattleScene();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        } else {
+            System.out.println("Pokemon is knocked out");
         }
     }
 
@@ -79,11 +95,15 @@ public class PokemonController {
     private void handlePokemon5() {
         System.out.println("Clicked Pokemon5!");
         Pokemon pokemon = userPlayer.getPokemons()[4];
-        userPlayer.setCurrentPokemon(pokemon);
-        try {
-            loadBattleScene();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        if(manager.checkAlive(pokemon)) {
+            userPlayer.setCurrentPokemon(pokemon);
+            try {
+                loadBattleScene();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        } else {
+            System.out.println("Pokemon is knocked out");
         }
     }
 
@@ -91,11 +111,15 @@ public class PokemonController {
     private void handlePokemon6() {
         System.out.println("Clicked Pokemon6!");
         Pokemon pokemon = userPlayer.getPokemons()[5];
-        userPlayer.setCurrentPokemon(pokemon);
-        try {
-            loadBattleScene();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        if(manager.checkAlive(pokemon)) {
+            userPlayer.setCurrentPokemon(pokemon);
+            try {
+                loadBattleScene();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        } else {
+            System.out.println("Pokemon is knocked out");
         }
     }
 

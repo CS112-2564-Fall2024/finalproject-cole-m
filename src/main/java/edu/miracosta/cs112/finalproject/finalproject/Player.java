@@ -2,7 +2,7 @@ package edu.miracosta.cs112.finalproject.finalproject;
 
 import edu.miracosta.cs112.finalproject.finalproject.Pokemons.Chimchar;
 
-abstract class Player {
+public class Player {
     private Pokemon[] pokemons;
     private Pokemon currentPokemon;
     private int pokemonCount;
@@ -132,7 +132,29 @@ abstract class Player {
         return true;
     }
 
-    public abstract Pokemon switchPokemon();
+    public void healPokemon() {
+        int potionsLeft = this.getPotionsCount();
+        if (potionsLeft > 0) {
+            int currentHp = this.getCurrentPokemon().getHp();
+            int maxHp = this.getCurrentPokemon().getMaxHP();
 
-    public abstract void healPokemon();
+            if (currentHp > 0) {
+                System.out.println(this.getCurrentPokemon().getName() + " HP was originally " + currentHp);
+
+                if (currentHp + 50 > maxHp) {
+                    this.getCurrentPokemon().setHp(maxHp);
+                    System.out.println("And was healed to max HP of " + maxHp);
+                } else {
+                    this.getCurrentPokemon().setHp(currentHp + 50);
+                    System.out.println(this.getCurrentPokemon().getName() + " was healed to a HP of " + this.getCurrentPokemon().getHp());
+                }
+
+                potionsLeft--;
+            } else {
+                System.out.println(this.getCurrentPokemon().getName() + " is knocked out");
+            }
+        } else {
+            System.out.println("You are out of potion!");
+        }
+    }
 }

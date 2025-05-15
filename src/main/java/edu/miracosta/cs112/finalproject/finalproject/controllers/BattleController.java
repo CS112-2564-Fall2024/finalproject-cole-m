@@ -2,7 +2,7 @@ package edu.miracosta.cs112.finalproject.finalproject.controllers;
 
 import edu.miracosta.cs112.finalproject.finalproject.BattleManager;
 import edu.miracosta.cs112.finalproject.finalproject.BotPlayer;
-import edu.miracosta.cs112.finalproject.finalproject.UserPlayer;
+import edu.miracosta.cs112.finalproject.finalproject.Player;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,7 +17,7 @@ import java.io.IOException;
 
 public class BattleController {
     private final BattleManager manager = BattleManager.getInstance();
-    private UserPlayer userPlayer = manager.getUserPlayer();
+    private Player userPlayer = manager.getUserPlayer();
     private BotPlayer botPlayer = manager.getBotPlayer();
 
     @FXML

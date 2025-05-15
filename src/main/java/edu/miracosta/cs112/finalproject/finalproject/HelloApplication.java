@@ -17,7 +17,7 @@ public class HelloApplication extends Application {
 
         // Get controller and set the UserPlayer
         BattleController controller = fxmlLoader.getController();
-        UserPlayer userPlayer = new UserPlayer(new Pokemon[]{
+        Player userPlayer = new Player(new Pokemon[]{
                 new Chimchar(),
                 new Blastoise(),
                 new Treecko(),

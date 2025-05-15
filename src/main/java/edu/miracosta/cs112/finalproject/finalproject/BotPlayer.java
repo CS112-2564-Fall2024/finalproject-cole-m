@@ -7,18 +7,12 @@ public class BotPlayer extends Player {
         super(pokemons, pokemonCount, maxPotionsCount, potionsCount);
     }
 
-    public Pokemon switchPokemon() {
+    public void switchPokemon() {
         int pokemonLeft = this.getPokemonCount();
 
-        if (pokemonLeft > 0) {
-            this.setPokemonCount(pokemonLeft - 1);
-            int nextPokemonIndex = this.getPokemons().length - pokemonLeft + 1;
-            this.setCurrentPokemon(this.getPokemons()[nextPokemonIndex]);
-            return this.getPokemons()[nextPokemonIndex];
-        }
-
-        System.out.println("You have no more Pokémons.");
-        return null;
+        this.setPokemonCount(pokemonLeft - 1);
+        int nextPokemonIndex = this.getPokemons().length - pokemonLeft + 1;
+        this.setCurrentPokemon(this.getPokemons()[nextPokemonIndex]);
     }
 
     public void commandAttack(Pokemon opponentPokemon) {
@@ -27,29 +21,5 @@ public class BotPlayer extends Player {
         Pokemon currentPokemon = this.getCurrentPokemon();
         AttackMove move = currentPokemon.getMoveSet()[randomIndex];
         currentPokemon.attack(move, opponentPokemon);
-    }
-
-    public void healPokemon() {
-        int potionsLeft = this.getPotionsCount();
-        if (potionsLeft > 0) {
-            int currentHp = this.getCurrentPokemon().getHp();
-            int maxHp = this.getCurrentPokemon().getMaxHP();
-
-            if (currentHp > 0) {
-                System.out.println(this.getCurrentPokemon().getName() + " HP was originally " + currentHp);
-
-                if (currentHp + 50 > maxHp) {
-                    this.getCurrentPokemon().setHp(maxHp);
-                    System.out.println("And was healed to max HP of " + maxHp);
-                } else {
-                    this.getCurrentPokemon().setHp(currentHp + 50);
-                    System.out.println(this.getCurrentPokemon().getName() + " was healed to a HP of " + this.getCurrentPokemon().getHp());
-                }
-
-                potionsLeft--;
-            }
-        } else {
-            System.out.println("You are out of potion!");
-        }
     }
 }

@@ -1,10 +1,18 @@
 package edu.miracosta.cs112.finalproject.finalproject;
 
 import edu.miracosta.cs112.finalproject.finalproject.controllers.AttackController;
+import edu.miracosta.cs112.finalproject.finalproject.controllers.PokemonController;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import javafx.stage.Window;
+
+import java.io.IOException;
 
 public class BattleManager {
     private static final BattleManager instance = new BattleManager();
-    private UserPlayer userPlayer;
+    private Player userPlayer;
     private BotPlayer botPlayer;
 
     public BattleManager() {
@@ -14,12 +22,12 @@ public class BattleManager {
         return instance;
     }
 
-    public void init(UserPlayer userPlayer, BotPlayer botPlayer) {
+    public void init(Player userPlayer, BotPlayer botPlayer) {
         this.userPlayer = userPlayer;
         this.botPlayer = botPlayer;
     }
 
-    public UserPlayer getUserPlayer() {
+    public Player getUserPlayer() {
         return this.userPlayer;
     }
 
@@ -33,26 +41,56 @@ public class BattleManager {
         Pokemon botPokemon = this.botPlayer.getCurrentPokemon();
 
         userPokemon.attack(move, botPokemon);
-
-        try {
-            if (!checkAlive(botPokemon)) {
+        if (!checkAlive(botPokemon)) {
+            try {
                 botPlayer.switchPokemon();
+                botTurn();
+            } catch (Exception e) {
+                System.out.println("Bot ran out of pokemons!");
+                System.out.println("Game Over");
+                //TODO Game Over
             }
-        } catch (Exception e) {
-            System.out.println("Game Over");
-            //TODO Game Over
         }
 
     }
 
     public void botTurn() {
+        Pokemon userPokemon = this.userPlayer.getCurrentPokemon();
+        Pokemon botPokemon = this.botPlayer.getCurrentPokemon();
 
+        float percentHealth = botPokemon.getHp() / botPokemon.getMaxHP();
+        if(percentHealth < 0.5) {
+            botPlayer.healPokemon();
+        } else {
+            botPlayer.commandAttack(userPokemon);
+            if(!checkAlive(userPokemon)) {
+                try {
+                    showPokemonSwitchScene();
+                } catch (Exception e) {
+                    System.out.println("Hi");
+                }
+            }
+
+        }
     }
 
     public boolean checkAlive(Pokemon pokemon) {
         if(pokemon.getHp() > 0) {
             return true;
         } return false;
+    }
+
+    private void showPokemonSwitchScene() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/miracosta/cs112/finalproject/finalproject/pokemon-scene.fxml"));
+        Parent root = loader.load();
+
+        PokemonController controller = loader.getController();
+        controller.initPokemonScene();
+
+        // You need access to the current stage
+        Stage stage = (Stage) javafx.stage.Window.getWindows().filtered(Window::isShowing).get(0);
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 
     @Override
