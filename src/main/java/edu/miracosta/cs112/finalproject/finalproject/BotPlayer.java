@@ -47,8 +47,6 @@ public class BotPlayer extends Player {
                 }
 
                 potionsLeft--;
-            } else {
-                System.out.println(this.getCurrentPokemon().getName() + " is knocked out");
             }
         } else {
             System.out.println("You are out of potion!");

@@ -32,7 +32,7 @@ public class AttackController {
     @FXML
     private void handleAttack1 () {
         System.out.println("Clicked Attack1!");
-        AttackMove move = userPlayer.getCurrentPokemon().getMoveSet()[0];
+        manager.playerAttack(0);
         try {
             loadBattleScene();
         } catch (IOException e) {
@@ -43,8 +43,7 @@ public class AttackController {
     @FXML
     private void handleAttack2 () {
         System.out.println("Clicked Attack2!");
-        AttackMove move = userPlayer.getCurrentPokemon().getMoveSet()[1];
-        userPlayer.getCurrentPokemon().attack(move, botPlayer.getCurrentPokemon());
+        manager.playerAttack(1);
         try {
             loadBattleScene();
         } catch (IOException e) {
@@ -55,8 +54,7 @@ public class AttackController {
     @FXML
     private void handleAttack3 () {
         System.out.println("Clicked Attack3!");
-        AttackMove move = userPlayer.getCurrentPokemon().getMoveSet()[2];
-        userPlayer.getCurrentPokemon().attack(move, botPlayer.getCurrentPokemon());
+        manager.playerAttack(2);
         try {
             loadBattleScene();
         } catch (IOException e) {
@@ -67,8 +65,7 @@ public class AttackController {
     @FXML
     private void handleAttack4 () {
         System.out.println("Clicked Attack4!");
-        AttackMove move = userPlayer.getCurrentPokemon().getMoveSet()[3];
-        userPlayer.getCurrentPokemon().attack(move, botPlayer.getCurrentPokemon());
+        manager.playerAttack(3);
         try {
             loadBattleScene();
         } catch (IOException e) {

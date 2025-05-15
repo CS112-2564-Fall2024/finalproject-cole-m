@@ -4,8 +4,8 @@ import edu.miracosta.cs112.finalproject.finalproject.controllers.AttackControlle
 
 public class BattleManager {
     private static final BattleManager instance = new BattleManager();
-    UserPlayer userPlayer;
-    BotPlayer botPlayer;
+    private UserPlayer userPlayer;
+    private BotPlayer botPlayer;
 
     public BattleManager() {
     }
@@ -27,7 +27,22 @@ public class BattleManager {
         return this.botPlayer;
     }
 
-    public void playerAttack(AttackMove move) {
+    public void playerAttack(int index) {
+        Pokemon userPokemon = this.userPlayer.getCurrentPokemon();
+        AttackMove move = userPokemon.getMoveSet()[index];
+        Pokemon botPokemon = this.botPlayer.getCurrentPokemon();
+
+        userPokemon.attack(move, botPokemon);
+
+        try {
+            if (!checkAlive(botPokemon)) {
+                botPlayer.switchPokemon();
+            }
+        } catch (Exception e) {
+            System.out.println("Game Over");
+            //TODO Game Over
+        }
+
     }
 
     public void botTurn() {
@@ -39,6 +54,7 @@ public class BattleManager {
             return true;
         } return false;
     }
+
     @Override
     public String toString() {
         return "BattleManager: " +
