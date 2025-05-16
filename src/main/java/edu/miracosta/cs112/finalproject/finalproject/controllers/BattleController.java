@@ -47,7 +47,7 @@ public class BattleController {
             userPlayer.healPokemon();
             userPlayer.setPotionsCount(userPlayer.getPotionsCount() - 1);
             this.setHealText();
-            this.updateUserHPBar(userPlayer.getCurrentPokemon());
+            this.updateUserHPBar();
         } catch (Exception e) {
             System.out.println("No more potions");
         }
@@ -103,13 +103,13 @@ public class BattleController {
         window.setScene(new Scene(root));
     }
 
-    public void updateUserHPBar(Pokemon pokemon) {
-        float currentHP = (float) pokemon.getHp() / pokemon.getMaxHP();
+    public void updateUserHPBar() {
+        float currentHP = (float) userPlayer.getCurrentPokemon().getHp() / userPlayer.getCurrentPokemon().getMaxHP();
         userHPProgressBar.setProgress(currentHP);
     }
 
-    public void updateBotHPBar(Pokemon pokemon) {
-        float currentHP = (float) pokemon.getHp() / pokemon.getMaxHP();
+    public void updateBotHPBar() {
+        float currentHP = (float) botPlayer.getCurrentPokemon().getHp() / botPlayer.getCurrentPokemon().getMaxHP();
         botHPProgressBar.setProgress(currentHP);
     }
 
@@ -119,6 +119,7 @@ public class BattleController {
         this.setUserPokemonImage();
         this.setBotPokemonImage();
         this.setHealText();
-        this.updateUserHPBar(userPlayer.getCurrentPokemon());
+        this.updateUserHPBar();
+        this.updateBotHPBar();
     }
 }

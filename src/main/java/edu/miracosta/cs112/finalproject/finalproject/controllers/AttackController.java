@@ -97,7 +97,11 @@ public class AttackController {
         battleController.initBattleScene();
 
         Stage window = (Stage) root.getScene().getWindow();
-        window.setScene(new Scene(newRoot));
+        try {
+            window.setScene(new Scene(newRoot));
+        } catch (Exception e) {
+            System.out.println();
+        }
     }
 
     public void updateAttackButtons() {

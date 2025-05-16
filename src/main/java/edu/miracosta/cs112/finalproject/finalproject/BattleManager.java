@@ -1,6 +1,7 @@
 package edu.miracosta.cs112.finalproject.finalproject;
 
 import edu.miracosta.cs112.finalproject.finalproject.controllers.AttackController;
+import edu.miracosta.cs112.finalproject.finalproject.controllers.BattleController;
 import edu.miracosta.cs112.finalproject.finalproject.controllers.PokemonController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -47,6 +48,11 @@ public class BattleManager {
         Pokemon botPokemon = this.botPlayer.getCurrentPokemon();
 
         userPokemon.attack(move, botPokemon);
+        try {
+            this.updateBotHPBar();
+        } catch (Exception e) {
+            System.out.println();
+        }
         if (!checkAlive(botPokemon)) {
             try {
                 botPlayer.switchPokemon();
@@ -72,6 +78,11 @@ public class BattleManager {
         System.out.println(botPokemon.getMaxHP());
         if(percentHealth < 0.5) {
             botPlayer.healPokemon();
+            try {
+                this.updateBotHPBar();
+            } catch (Exception e) {
+                System.out.println();
+            }
         } else {
             botPlayer.commandAttack(userPokemon);
             if(!checkAlive(userPokemon)) {
@@ -91,6 +102,14 @@ public class BattleManager {
         if(pokemon.getHp() > 0) {
             return true;
         } return false;
+    }
+
+    public void updateBotHPBar() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/miracosta/cs112/finalproject/finalproject/battle-scene.fxml"));
+        Parent root = loader.load();
+
+        BattleController controller = loader.getController();
+        controller.updateBotHPBar();
     }
 
     private void showPokemonSwitchScene() throws IOException {
