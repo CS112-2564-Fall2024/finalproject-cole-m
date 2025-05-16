@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -26,6 +27,9 @@ public class PokemonController {
 
     @FXML
     private ImageView pokemonImage1, pokemonImage2, pokemonImage3, pokemonImage4, pokemonImage5, pokemonImage6;
+
+    @FXML
+    private ProgressBar pokemon1PB, pokemon2PB, pokemon3PB, pokemon4PB, pokemon5PB, pokemon6PB;
 
     @FXML
     private void handlePokemon1() {
@@ -159,23 +163,37 @@ public class PokemonController {
 
             pokemon1Button.setText(pokemons[0].getName());
             pokemonImage1.setImage(new Image(getClass().getResourceAsStream(pokemons[0].getImagePath())));
+            updatePokemonHB(pokemon1PB, pokemons[0]);
 //            pokemon1Button.setStyle(getStyle(pokemons[0]));
             pokemon2Button.setText(pokemons[1].getName());
             pokemonImage2.setImage(new Image(getClass().getResourceAsStream(pokemons[1].getImagePath())));
+            updatePokemonHB(pokemon2PB, pokemons[1]);
 //            pokemon2Button.setStyle(getStyle(pokemons[1]));
             pokemon3Button.setText(pokemons[2].getName());
             pokemonImage3.setImage(new Image(getClass().getResourceAsStream(pokemons[2].getImagePath())));
+            updatePokemonHB(pokemon3PB, pokemons[2]);
 //            pokemon3Button.setStyle(getStyle(pokemons[2]));
             pokemon4Button.setText(pokemons[3].getName());
             pokemonImage4.setImage(new Image(getClass().getResourceAsStream(pokemons[3].getImagePath())));
+            updatePokemonHB(pokemon4PB, pokemons[3]);
 //            pokemon4Button.setStyle(getStyle(pokemons[3]));
             pokemon5Button.setText(pokemons[4].getName());
             pokemonImage5.setImage(new Image(getClass().getResourceAsStream(pokemons[4].getImagePath())));
+            updatePokemonHB(pokemon5PB, pokemons[4]);
 //            pokemon5Button.setStyle(getStyle(pokemons[4]));
             pokemon6Button.setText(pokemons[5].getName());
             pokemonImage6.setImage(new Image(getClass().getResourceAsStream(pokemons[5].getImagePath())));
+            updatePokemonHB(pokemon6PB, pokemons[5]);
 //            pokemon6Button.setStyle(getStyle(pokemons[5]));
         }
+    }
+
+    private void updatePokemonHB(ProgressBar pb, Pokemon pokemon) {
+        float currentHP = (float) pokemon.getHp() / pokemon.getMaxHP();
+        if(currentHP <= 0) {
+            currentHP = 0.0f;
+        }
+        pb.setProgress(currentHP);
     }
 
     public String getStyle(Pokemon pokemon) {

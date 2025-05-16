@@ -23,5 +23,11 @@
       <ImageView fx:id="pokemonImage4" fitHeight="90.0" fitWidth="87.0" layoutX="304.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="pokemonImage6" fitHeight="90.0" fitWidth="87.0" layoutX="304.0" layoutY="290.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="pokemonImage5" fitHeight="90.0" fitWidth="87.0" layoutX="14.0" layoutY="239.0" pickOnBounds="true" preserveRatio="true" />
+      <ProgressBar fx:id="pokemon1PB" layoutX="165.0" layoutY="98.0" prefHeight="18.0" prefWidth="120.0" progress="0.0" />
+      <ProgressBar fx:id="pokemon3PB" layoutX="165.0" layoutY="200.0" prefHeight="18.0" prefWidth="120.0" progress="0.0" />
+      <ProgressBar fx:id="pokemon5PB" layoutX="165.0" layoutY="311.0" prefHeight="18.0" prefWidth="120.0" progress="0.0" />
+      <ProgressBar fx:id="pokemon2PB" layoutX="457.0" layoutY="149.0" prefHeight="18.0" prefWidth="120.0" progress="0.0" />
+      <ProgressBar fx:id="pokemon4PB" layoutX="457.0" layoutY="254.0" prefHeight="18.0" prefWidth="120.0" progress="0.0" />
+      <ProgressBar fx:id="pokemon6PB" layoutX="457.0" layoutY="362.0" prefHeight="18.0" prefWidth="120.0" progress="0.0" />
    </children>
 </Pane>
