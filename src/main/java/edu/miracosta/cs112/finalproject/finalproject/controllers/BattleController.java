@@ -4,6 +4,9 @@ import edu.miracosta.cs112.finalproject.finalproject.BattleManager;
 import edu.miracosta.cs112.finalproject.finalproject.BotPlayer;
 import edu.miracosta.cs112.finalproject.finalproject.Player;
 import edu.miracosta.cs112.finalproject.finalproject.Pokemon;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,6 +17,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 
@@ -104,13 +108,29 @@ public class BattleController {
     }
 
     public void updateUserHPBar() {
-        float currentHP = (float) userPlayer.getCurrentPokemon().getHp() / userPlayer.getCurrentPokemon().getMaxHP();
-        userHPProgressBar.setProgress(currentHP);
+        float newHP = (float) userPlayer.getCurrentPokemon().getHp() / userPlayer.getCurrentPokemon().getMaxHP();
+        double currentProgress = userHPProgressBar.getProgress();
+
+        newHP = Math.max(0f, Math.min(newHP, 1f));
+
+        Timeline timeline = new Timeline(
+                new KeyFrame(Duration.seconds(1),
+                        new KeyValue(userHPProgressBar.progressProperty(), newHP))
+        );
+        timeline.play();
     }
 
     public void updateBotHPBar() {
-        float currentHP = (float) botPlayer.getCurrentPokemon().getHp() / botPlayer.getCurrentPokemon().getMaxHP();
-        botHPProgressBar.setProgress(currentHP);
+        float newHP = (float) botPlayer.getCurrentPokemon().getHp() / botPlayer.getCurrentPokemon().getMaxHP();
+        double currentProgress = botHPProgressBar.getProgress();
+
+        newHP = Math.max(0f, Math.min(newHP, 1f));
+
+        Timeline timeline = new Timeline(
+                new KeyFrame(Duration.seconds(1),
+                        new KeyValue(botHPProgressBar.progressProperty(), newHP))
+        );
+        timeline.play();
     }
 
     public void initBattleScene() {

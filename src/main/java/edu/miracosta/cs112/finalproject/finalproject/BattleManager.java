@@ -76,7 +76,7 @@ public class BattleManager {
         System.out.println(percentHealth);
         System.out.println(botPokemon.getHp());
         System.out.println(botPokemon.getMaxHP());
-        if(percentHealth < 0.5) {
+        if(percentHealth < 0.2) {
             botPlayer.healPokemon();
             try {
                 this.updateBotHPBar();
