@@ -10,7 +10,6 @@ public class BotPlayer extends Player {
     public void switchPokemon() throws OutOfPokemons{
         int pokemonLeft = this.getPokemonCount();
 
-        System.out.println(pokemonLeft);
         if (pokemonLeft <= 1) {
             throw new OutOfPokemons("Bot ran out of Pokemons!");
         }
