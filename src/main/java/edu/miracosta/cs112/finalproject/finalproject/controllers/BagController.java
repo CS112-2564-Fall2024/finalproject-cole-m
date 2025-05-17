@@ -42,7 +42,6 @@ public class BagController {
                 System.out.println();
             }
         }
-        System.out.println("In handle 1 Potion");
     }
 
     public void handlePotion2() {
@@ -55,7 +54,6 @@ public class BagController {
                 System.out.println();
             }
         }
-        System.out.println("In handle 2 Potion");
     }
 
     @FXML
@@ -64,7 +62,6 @@ public class BagController {
             if (newScene != null) {
                 newScene.addEventHandler(KeyEvent.KEY_PRESSED, event -> {
                     if (event.getCode() == KeyCode.ESCAPE) {
-                        System.out.println("Escape key was pressed!");
                         try {
                             loadBattleScene();
                         } catch (IOException e) {

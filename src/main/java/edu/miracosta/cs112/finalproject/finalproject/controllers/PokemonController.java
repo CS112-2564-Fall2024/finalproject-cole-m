@@ -33,7 +33,6 @@ public class PokemonController {
 
     @FXML
     private void handlePokemon1() {
-        System.out.println("Clicked Pokemon1!");
         Pokemon pokemon = userPlayer.getPokemons()[0];
         if(manager.checkAlive(pokemon)) {
             userPlayer.setCurrentPokemon(pokemon);
@@ -49,7 +48,6 @@ public class PokemonController {
 
     @FXML
     private void handlePokemon2() {
-        System.out.println("Clicked Pokemon2!");
         Pokemon pokemon = userPlayer.getPokemons()[1];
         if(manager.checkAlive(pokemon)) {
             userPlayer.setCurrentPokemon(pokemon);
@@ -65,7 +63,6 @@ public class PokemonController {
 
     @FXML
     private void handlePokemon3() {
-        System.out.println("Clicked Pokemon3!");
         Pokemon pokemon = userPlayer.getPokemons()[2];
         if(manager.checkAlive(pokemon)) {
             userPlayer.setCurrentPokemon(pokemon);
@@ -81,7 +78,6 @@ public class PokemonController {
 
     @FXML
     private void handlePokemon4() {
-        System.out.println("Clicked Pokemon4!");
         Pokemon pokemon = userPlayer.getPokemons()[3];
         if(manager.checkAlive(pokemon)) {
             userPlayer.setCurrentPokemon(pokemon);
@@ -97,7 +93,6 @@ public class PokemonController {
 
     @FXML
     private void handlePokemon5() {
-        System.out.println("Clicked Pokemon5!");
         Pokemon pokemon = userPlayer.getPokemons()[4];
         if(manager.checkAlive(pokemon)) {
             userPlayer.setCurrentPokemon(pokemon);
@@ -113,7 +108,6 @@ public class PokemonController {
 
     @FXML
     private void handlePokemon6() {
-        System.out.println("Clicked Pokemon6!");
         Pokemon pokemon = userPlayer.getPokemons()[5];
         if(manager.checkAlive(pokemon)) {
             userPlayer.setCurrentPokemon(pokemon);
@@ -133,7 +127,6 @@ public class PokemonController {
             if (newScene != null) {
                 newScene.addEventHandler(KeyEvent.KEY_PRESSED, event -> {
                     if (event.getCode() == KeyCode.ESCAPE) {
-                        System.out.println("Escape key was pressed!");
                         try {
                             loadBattleScene();
                         } catch (IOException e) {
@@ -157,7 +150,6 @@ public class PokemonController {
     }
 
     public void updatePokemonButtons() {
-        System.out.println("In update!");
         if (userPlayer != null && userPlayer.getPokemons() != null) {
             Pokemon[] pokemons = userPlayer.getPokemons(); // Assume this returns 4 strings
 

@@ -86,7 +86,6 @@ public class BattleManager {
             if(!checkAlive(userPokemon)) {
                 if(this.userPlayer.getPokemonCount() > 1) {
                     this.userPlayer.setPokemonCount(this.userPlayer.getPokemonCount() - 1);
-                    System.out.println(this.userPlayer.getPokemonCount());
                     try {
                         showPokemonSwitchScene();
                     } catch (Exception e) {

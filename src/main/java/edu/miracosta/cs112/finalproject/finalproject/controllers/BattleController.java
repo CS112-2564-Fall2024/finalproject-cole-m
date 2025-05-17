@@ -40,27 +40,20 @@ public class BattleController {
     @FXML
     private void handleFight() throws IOException {
         loadAttackScene();
-
-        System.out.println("Fight button clicked!");
     }
 
     @FXML
     private void handleHeal() throws IOException {
         loadBagScene();
-
-        System.out.println();
     }
 
     @FXML
     private void handlePokemon() throws IOException{
         loadPokemonScene();
-
-        System.out.println("Pokemon button clicked!");
     }
 
     @FXML
     private void handleRun() {
-        System.out.println("Run button clicked!");
         System.exit(0);
     }
 

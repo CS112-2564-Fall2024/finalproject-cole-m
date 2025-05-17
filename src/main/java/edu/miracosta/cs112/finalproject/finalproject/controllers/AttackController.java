@@ -28,7 +28,6 @@ public class AttackController {
 
     @FXML
     private void handleAttack1 () {
-        System.out.println("Clicked Attack1!");
         manager.playerAttack(0);
         try {
             loadBattleScene();
@@ -39,7 +38,6 @@ public class AttackController {
 
     @FXML
     private void handleAttack2 () {
-        System.out.println("Clicked Attack2!");
         manager.playerAttack(1);
         try {
             loadBattleScene();
@@ -50,7 +48,6 @@ public class AttackController {
 
     @FXML
     private void handleAttack3 () {
-        System.out.println("Clicked Attack3!");
         manager.playerAttack(2);
         try {
             loadBattleScene();
@@ -61,7 +58,6 @@ public class AttackController {
 
     @FXML
     private void handleAttack4 () {
-        System.out.println("Clicked Attack4!");
         manager.playerAttack(3);
         try {
             loadBattleScene();
@@ -77,7 +73,6 @@ public class AttackController {
             if (newScene != null) {
                 newScene.addEventHandler(KeyEvent.KEY_PRESSED, event -> {
                     if (event.getCode() == KeyCode.ESCAPE) {
-                        System.out.println("Escape key was pressed!");
                         try {
                             loadBattleScene();
                         } catch (IOException e) {
@@ -105,7 +100,6 @@ public class AttackController {
     }
 
     public void updateAttackButtons() {
-        System.out.println("In update!");
         if (userPlayer != null && userPlayer.getCurrentPokemon() != null) {
             AttackMove[] moves = userPlayer.getCurrentPokemon().getMoveSet(); // Assume this returns 4 strings
             attack1Button.setText(moves[0].getAttackName());
