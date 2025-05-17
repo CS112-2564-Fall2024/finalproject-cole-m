@@ -109,29 +109,9 @@ public class Player {
         return true;
     }
 
-//    public void healPokemon() {
-//        int potionsLeft = this.getPotionsCount();
-//        if (potionsLeft > 0) {
-//            int currentHp = this.getCurrentPokemon().getHp();
-//            int maxHp = this.getCurrentPokemon().getMaxHP();
-//
-//            if (currentHp > 0) {
-//                System.out.println(this.getCurrentPokemon().getName() + " HP was originally " + currentHp);
-//
-//                if (currentHp + 50 > maxHp) {
-//                    this.getCurrentPokemon().setHp(maxHp);
-//                    System.out.println("And was healed to max HP of " + maxHp);
-//                } else {
-//                    this.getCurrentPokemon().setHp(currentHp + 50);
-//                    System.out.println(this.getCurrentPokemon().getName() + " was healed to a HP of " + this.getCurrentPokemon().getHp());
-//                }
-//
-//                this.setPotionsCount(potionsLeft - 1);
-//            } else {
-//                System.out.println(this.getCurrentPokemon().getName() + " is knocked out");
-//            }
-//        } else {
-//            System.out.println("You are out of potion!");
-//        }
-//    }
+    public void healPokemon(int index) {
+        Potion potion = this.getPotions()[index];
+        int potionsLeft = potion.getPotionsLeft();
+        potion.heal(this.currentPokemon);
+    }
 }

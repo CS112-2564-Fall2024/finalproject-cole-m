@@ -15,7 +15,6 @@ public class HelloApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("battle-scene.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
 
-        // Get controller and set the UserPlayer
         BattleController controller = fxmlLoader.getController();
         Player userPlayer = new Player(new Pokemon[]{
                 new Chimchar(),

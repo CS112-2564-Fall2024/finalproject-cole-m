@@ -33,10 +33,28 @@ public class BagController {
 
     @FXML
     public void handlePotion1() {
+        int potionsLeft = this.userPlayer.getPotions()[0].getPotionsLeft();
+        if(potionsLeft > 0) {
+            this.userPlayer.healPokemon(0);
+            try {
+                loadBattleScene();
+            } catch (Exception e) {
+                System.out.println();
+            }
+        }
         System.out.println("In handle 1 Potion");
     }
 
     public void handlePotion2() {
+        int potionsLeft = this.userPlayer.getPotions()[1].getPotionsLeft();
+        if(potionsLeft > 0) {
+            this.userPlayer.healPokemon(1);
+            try {
+                loadBattleScene();
+            } catch (Exception e) {
+                System.out.println();
+            }
+        }
         System.out.println("In handle 2 Potion");
     }
 
