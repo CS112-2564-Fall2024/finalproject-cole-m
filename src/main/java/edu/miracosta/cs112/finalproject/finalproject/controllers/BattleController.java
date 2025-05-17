@@ -18,7 +18,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-
 import java.io.IOException;
 
 public class BattleController {
@@ -46,16 +45,10 @@ public class BattleController {
     }
 
     @FXML
-    private void handleHeal() {
-        try {
-            userPlayer.healPokemon();
-            userPlayer.setPotionsCount(userPlayer.getPotionsCount() - 1);
-            this.setHealText();
-            this.updateUserHPBar();
-        } catch (Exception e) {
-            System.out.println("No more potions");
-        }
-        System.out.println("Heal button clicked!");
+    private void handleHeal() throws IOException {
+        loadBagScene();
+
+        System.out.println();
     }
 
     @FXML
@@ -81,9 +74,9 @@ public class BattleController {
         botPokemonImage.setImage(new Image(getClass().getResourceAsStream(botPlayer.getCurrentPokemon().getImagePath())));
     }
 
-    public void setHealText() {
-        healCountText.setText(userPlayer.getPotionsCount() + " / " + userPlayer.getMaxPotionsCount());
-    }
+//    public void setHealText() {
+//        healCountText.setText(userPlayer.getPotionsCount() + " / " + userPlayer.getMaxPotionsCount());
+//    }
 
     public void loadAttackScene() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/miracosta/cs112/finalproject/finalproject/attack-scene.fxml"));
@@ -93,6 +86,17 @@ public class BattleController {
         controller.initAttackScene();
 
         Stage window = (Stage) fightButton.getScene().getWindow();
+        window.setScene(new Scene(root));
+    }
+
+    public void loadBagScene() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/miracosta/cs112/finalproject/finalproject/bag-scene.fxml"));
+        Parent root = loader.load();
+
+        BagController controller = loader.getController();
+        controller.initBagScene();
+
+        Stage window = (Stage) healButton.getScene().getWindow();
         window.setScene(new Scene(root));
     }
 
@@ -138,7 +142,7 @@ public class BattleController {
         this.botPlayer = manager.getBotPlayer();
         this.setUserPokemonImage();
         this.setBotPokemonImage();
-        this.setHealText();
+//        this.setHealText();
         this.updateUserHPBar();
         this.updateBotHPBar();
     }

@@ -4,27 +4,28 @@ import edu.miracosta.cs112.finalproject.finalproject.Pokemons.Chimchar;
 
 public class Player {
     private Pokemon[] pokemons;
+    private Potion[] potions;
     private Pokemon currentPokemon;
     private int pokemonCount;
-    private int maxPotionsCount;
-    private int potionsCount;
 
-    public Player(Pokemon[] pokemons, int pokemonCount, int maxPotionsCount, int potionsCount) {
-        this.setAll(pokemons, pokemons[0], pokemonCount, maxPotionsCount, potionsCount);
-    }
-
-    public Player() {
-        this.setAll(new Pokemon[6], new Chimchar(), 1, 5, 5);
+    public Player(Pokemon[] pokemons, Potion[] potions,int pokemonCount) {
+        this.setAll(pokemons, potions, pokemons[0], pokemonCount);
     }
 
     public Player(Player copy) {
-        this.setAll(copy.pokemons, copy.currentPokemon, copy.pokemonCount, copy.maxPotionsCount, copy.potionsCount);
+        this.setAll(copy.pokemons, copy.potions, copy.currentPokemon, copy.pokemonCount);
     }
 
     public void setPokemons(Pokemon[] pokemons) {
         if (pokemons != null && pokemons.length <= 6) {
             this.pokemons = pokemons;
             this.setPokemonCount(pokemons.length);
+        }
+    }
+
+    public void setPotions(Potion[] potions) {
+        if(potions != null) {
+            this.potions = potions;
         }
     }
 
@@ -38,28 +39,19 @@ public class Player {
         }
     }
 
-    public void setMaxPotionsCount(int maxPotionsCount) {
-        if (maxPotionsCount >= 0) {
-            this.maxPotionsCount = maxPotionsCount;
-        }
-    }
-
-    public void setPotionsCount(int potionsCount) {
-        if (potionsCount >= 0) {
-            this.potionsCount = potionsCount;
-        }
-    }
-
-    public void setAll(Pokemon[] pokemons, Pokemon currentPokemon, int pokemonCount, int maxPotionsCount, int potionsCount) {
+    public void setAll(Pokemon[] pokemons, Potion[] potions, Pokemon currentPokemon,int pokemonCount) {
         this.setPokemons(pokemons);
+        this.setPotions(potions);
         this.setCurrentPokemon(currentPokemon);
         this.setPokemonCount(pokemonCount);
-        this.setMaxPotionsCount(maxPotionsCount);
-        this.setPotionsCount(potionsCount);
     }
 
     public Pokemon[] getPokemons() {
         return this.pokemons;
+    }
+
+    public Potion[] getPotions() {
+        return this.potions;
     }
 
     public Pokemon getCurrentPokemon() {
@@ -68,14 +60,6 @@ public class Player {
 
     public int getPokemonCount() {
         return this.pokemonCount;
-    }
-
-    public int getMaxPotionsCount() {
-        return this.maxPotionsCount;
-    }
-
-    public int getPotionsCount() {
-        return this.potionsCount;
     }
 
     @Override
@@ -90,10 +74,9 @@ public class Player {
             }
         }
         return "Player: Pokemons = [" + pokemonNames + "]" +
+                ", Potions = [" + potions + "]" +
                 ", CurrentPokemon = " + this.currentPokemon +
-                ", PokemonCount = " + this.pokemonCount +
-                ", MaxPotionsCount = " + this.maxPotionsCount +
-                ", PotionsCount = " + this.potionsCount;
+                ", PokemonCount = " + this.pokemonCount;
     }
 
     @Override
@@ -106,12 +89,6 @@ public class Player {
                 return false;
             }
             if (this.pokemonCount != otherPlayer.pokemonCount) {
-                return false;
-            }
-            if (this.maxPotionsCount != otherPlayer.maxPotionsCount) {
-                return false;
-            }
-            if (this.potionsCount != otherPlayer.potionsCount) {
                 return false;
             }
             if (this.pokemons == null && otherPlayer.pokemons != null || this.pokemons != null && otherPlayer.pokemons == null) {
@@ -132,29 +109,29 @@ public class Player {
         return true;
     }
 
-    public void healPokemon() {
-        int potionsLeft = this.getPotionsCount();
-        if (potionsLeft > 0) {
-            int currentHp = this.getCurrentPokemon().getHp();
-            int maxHp = this.getCurrentPokemon().getMaxHP();
-
-            if (currentHp > 0) {
-                System.out.println(this.getCurrentPokemon().getName() + " HP was originally " + currentHp);
-
-                if (currentHp + 50 > maxHp) {
-                    this.getCurrentPokemon().setHp(maxHp);
-                    System.out.println("And was healed to max HP of " + maxHp);
-                } else {
-                    this.getCurrentPokemon().setHp(currentHp + 50);
-                    System.out.println(this.getCurrentPokemon().getName() + " was healed to a HP of " + this.getCurrentPokemon().getHp());
-                }
-
-                this.setPotionsCount(potionsLeft - 1);
-            } else {
-                System.out.println(this.getCurrentPokemon().getName() + " is knocked out");
-            }
-        } else {
-            System.out.println("You are out of potion!");
-        }
-    }
+//    public void healPokemon() {
+//        int potionsLeft = this.getPotionsCount();
+//        if (potionsLeft > 0) {
+//            int currentHp = this.getCurrentPokemon().getHp();
+//            int maxHp = this.getCurrentPokemon().getMaxHP();
+//
+//            if (currentHp > 0) {
+//                System.out.println(this.getCurrentPokemon().getName() + " HP was originally " + currentHp);
+//
+//                if (currentHp + 50 > maxHp) {
+//                    this.getCurrentPokemon().setHp(maxHp);
+//                    System.out.println("And was healed to max HP of " + maxHp);
+//                } else {
+//                    this.getCurrentPokemon().setHp(currentHp + 50);
+//                    System.out.println(this.getCurrentPokemon().getName() + " was healed to a HP of " + this.getCurrentPokemon().getHp());
+//                }
+//
+//                this.setPotionsCount(potionsLeft - 1);
+//            } else {
+//                System.out.println(this.getCurrentPokemon().getName() + " is knocked out");
+//            }
+//        } else {
+//            System.out.println("You are out of potion!");
+//        }
+//    }
 }

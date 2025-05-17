@@ -2,7 +2,7 @@ package edu.miracosta.cs112.finalproject.finalproject;
 
 import java.util.Objects;
 
-abstract class Potion {
+public abstract class Potion {
     private int potionsLeft;
     private int potionsMax;
 

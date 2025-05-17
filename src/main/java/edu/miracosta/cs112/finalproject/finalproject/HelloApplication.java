@@ -24,7 +24,10 @@ public class HelloApplication extends Application {
                 new Floatzel(),
                 new Hooh(),
                 new Kyogre()},
-                6, 10, 10);
+                new Potion[] {
+                        new GreatPotion(3, 3),
+                        new MysteriousPotion(2, 2)},
+                6);
         BotPlayer botPlayer = new BotPlayer(new Pokemon[]{
                 new Kyogre(),
                 new Blastoise(),
@@ -32,10 +35,14 @@ public class HelloApplication extends Application {
                 new Floatzel(),
                 new Hooh(),
                 new Chimchar()},
-                6, 10, 10);
+                new Potion[] {
+                        new GreatPotion(3, 3),
+                        new MysteriousPotion(2, 2)},
+                6);
         BattleManager.getInstance().init(userPlayer, botPlayer, stage);
         controller.initBattleScene();
 
+        System.out.println(userPlayer.getPotions()[0].getPotionsLeft());
         stage.setTitle("Pokemon Battle!");
         stage.setScene(scene);
         stage.show();
