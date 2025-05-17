@@ -67,6 +67,16 @@ public class BattleManager {
 
     }
 
+    public void playerHeal(int index) {
+        this.userPlayer.healPokemon(index);
+        try {
+            this.updateBotHPBar();
+        } catch (Exception e) {
+            System.out.println();
+        }
+        botTurn();
+    }
+
     public void botTurn() {
         Pokemon userPokemon = this.userPlayer.getCurrentPokemon();
         Pokemon botPokemon = this.botPlayer.getCurrentPokemon();

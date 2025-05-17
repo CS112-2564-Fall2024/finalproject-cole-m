@@ -12,22 +12,24 @@ public class GreatPotion extends Potion{
             int maxHp = pokemon.getMaxHP();
 
             if (currentHp > 0) {
-                System.out.println(pokemon.getName() + " HP was originally " + currentHp);
-
                 if (currentHp + 20 > maxHp) {
                     pokemon.setHp(maxHp);
-                    System.out.println("And was healed to max HP of " + maxHp);
+                    System.out.println(pokemon.getName() + " was healed to max HP of " + maxHp);
+                    System.out.println();
                 } else {
                     pokemon.setHp(currentHp + 20);
                     System.out.println(pokemon.getName() + " was healed to a HP of " + pokemon.getHp());
+                    System.out.println();
                 }
 
                 this.setPotionsLeft(potionsLeft - 1);
             } else {
                 System.out.println(pokemon.getName() + " is knocked out");
+                System.out.println();
             }
         } else {
             System.out.println("You are out of potion!");
+            System.out.println();
         }
     }
 }

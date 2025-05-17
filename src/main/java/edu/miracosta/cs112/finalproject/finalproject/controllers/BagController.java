@@ -35,7 +35,7 @@ public class BagController {
     public void handlePotion1() {
         int potionsLeft = this.userPlayer.getPotions()[0].getPotionsLeft();
         if(potionsLeft > 0) {
-            this.userPlayer.healPokemon(0);
+            this.manager.playerHeal(0);
             try {
                 loadBattleScene();
             } catch (Exception e) {
@@ -47,7 +47,7 @@ public class BagController {
     public void handlePotion2() {
         int potionsLeft = this.userPlayer.getPotions()[1].getPotionsLeft();
         if(potionsLeft > 0) {
-            this.userPlayer.healPokemon(1);
+            this.manager.playerHeal(1);
             try {
                 loadBattleScene();
             } catch (Exception e) {
