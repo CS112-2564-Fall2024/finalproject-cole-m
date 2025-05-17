@@ -6,16 +6,14 @@ public class MysteriousPotion extends Potion{
     }
 
     public void heal(Pokemon pokemon){
-        double randomValue = 0.5 + (Math.random() * 0.5);
+        int addHP = (int) (50 + (Math.random() * 51));
         int potionsLeft = this.getPotionsLeft();
-        int addHP = (int) randomValue * 100;
         if (potionsLeft > 0) {
             int currentHp = pokemon.getHp();
             int maxHp = pokemon.getMaxHP();
 
             if (currentHp > 0) {
                 System.out.println(pokemon.getName() + " HP was originally " + currentHp);
-
                 if (currentHp + addHP > maxHp) {
                     pokemon.setHp(maxHp);
                     System.out.println("And was healed to max HP of " + maxHp);
