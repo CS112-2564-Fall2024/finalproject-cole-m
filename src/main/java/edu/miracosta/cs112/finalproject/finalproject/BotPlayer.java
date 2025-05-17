@@ -7,8 +7,13 @@ public class BotPlayer extends Player {
         super(pokemons, potions, pokemonCount);
     }
 
-    public void switchPokemon() {
+    public void switchPokemon() throws OutOfPokemons{
         int pokemonLeft = this.getPokemonCount();
+
+        System.out.println(pokemonLeft);
+        if (pokemonLeft <= 1) {
+            throw new OutOfPokemons("Bot ran out of Pokemons!");
+        }
 
         this.setPokemonCount(pokemonLeft - 1);
         int nextPokemonIndex = this.getPokemons().length - pokemonLeft + 1;

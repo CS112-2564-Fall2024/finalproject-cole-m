@@ -56,9 +56,8 @@ public class BattleManager {
         if (!checkAlive(botPokemon)) {
             try {
                 botPlayer.switchPokemon();
-            } catch (Exception e) {
-                System.out.println("Bot ran out of pokemons!");
-                System.out.println("Game Over");
+            } catch (OutOfPokemons oop) {
+                System.out.println(oop.getMessage());
                 System.exit(0);
             }
         } else {
@@ -73,9 +72,6 @@ public class BattleManager {
         Pokemon botPokemon = this.botPlayer.getCurrentPokemon();
 
         float percentHealth = (float)botPokemon.getHp() / botPokemon.getMaxHP();
-        System.out.println(percentHealth);
-        System.out.println(botPokemon.getHp());
-        System.out.println(botPokemon.getMaxHP());
         if(percentHealth < 0.2) {
             botPlayer.healPokemon();
             try {
@@ -85,14 +81,24 @@ public class BattleManager {
             }
         } else {
             botPlayer.commandAttack(userPokemon);
+            try {
+
             if(!checkAlive(userPokemon)) {
-                try {
-                    showPokemonSwitchScene();
-                } catch (Exception e) {
-                    System.out.println("PLayer ran out of pokemons!");
-                    System.out.println("Game Over");
-                    System.exit(0);
+                if(this.userPlayer.getPokemonCount() > 1) {
+                    this.userPlayer.setPokemonCount(this.userPlayer.getPokemonCount() - 1);
+                    System.out.println(this.userPlayer.getPokemonCount());
+                    try {
+                        showPokemonSwitchScene();
+                    } catch (Exception e) {
+                        System.out.println();
+                    }
+                } else {
+                    throw new OutOfPokemons("Player has no more Pokemons!");
                 }
+            }
+            } catch (OutOfPokemons oop) {
+                System.out.println(oop.getMessage());
+                System.exit(0);
             }
 
         }
